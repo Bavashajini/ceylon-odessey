@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ceylon Odyssey - Sri Lanka Travel & District Explorer</title>
+    <meta name="description" content="Explore precious and unique places across Sri Lanka's districts, scenic transport guides, budget hotel options, and traveler coordination." />
+    <meta property="og:title" content="Ceylon Odyssey - Sri Lanka Travel & District Explorer" />
+    <meta property="og:description" content="Explore precious and unique places across Sri Lanka's districts, scenic transport guides, budget hotel options, and traveler coordination." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Pure CSS stylesheet -->
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- TOP EMERGENCY & HOTLINE STRIP -->
+    <div class="top-strip">
+      <div class="container">
+        <div>
+          <span>📞 24/7 Traveler Hotline: <a href="tel:+94112345678">+94 11 234 5678</a></span>
+          <span style="margin: 0 8px; color: #57534e;">·</span>
+          <span>Taxi & Hotel Fleet Desk: <a href="tel:+94718882345">+94 71 888 2345</a></span>
+        </div>
+        <div>
+          <span>SLTDA Tourism Licensed Agency TS/TA/2014/1982</span>
+          <span style="margin: 0 8px; color: #57534e;">·</span>
+          <span style="color: #34d399; font-weight: 700;">WhatsApp: +94 77 123 4567</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN NAVIGATION HEADER -->
+    <header class="main-header">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#hero" class="brand-wordmark">
+            <span class="brand-icon">🧭</span>
+            <span>Ceylon Odyssey</span>
+          </a>
+
+          <nav>
+            <ul class="nav-menu">
+              <li><a href="#districts">District Explorer</a></li>
+              <li><a href="#transport">Transport & Chauffeurs</a></li>
+              <li><a href="#stays">Hotel Stays & Budget</a></li>
+              <li><a href="#estimator">Cost Estimator</a></li>
+              <li><a href="#reviews">Reviews</a></li>
+              <li><a href="#partner-contact" style="color: var(--primary); font-weight: 700;">Partner With Us</a></li>
+            </ul>
+          </nav>
+
+          <div class="nav-actions">
+            <select class="currency-select" id="currency-select" onchange="changeCurrency(this.value)">
+              <option value="USD">USD ($)</option>
+              <option value="LKR">LKR (Rs)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+            </select>
+            <a href="#partner-contact" class="btn btn-primary">Plan My Journey</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1600&q=80" alt="Sigiriya Sunrise Sri Lanka" class="hero-backdrop">
+      <div class="hero-overlay"></div>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">
+            <span>✨</span>
+            <span>Official Sri Lanka Travel & District Guide · Est. 2014</span>
+          </div>
+
+          <h1 class="hero-title">
+            Discover the Precious & Unique Wonders in Every District of Sri Lanka
+          </h1>
+
+          <p class="hero-desc">
+            From the cloud-forest peaks of Ella and ancient citadels of Sigiriya to turquoise whale sanctuaries in Mirissa. We provide authentic local guidance, seamless chauffeur transport, and handpicked stays for small, medium, and high budgets.
+          </p>
+
+          <!-- Search Box -->
+          <div class="search-box">
+            <input type="text" id="district-search-input" oninput="handleSearch(this.value)" placeholder="Search district or place (e.g., Sigiriya, Ella, Galle Fort, Kandy)..." class="search-input">
+            <a href="#districts" class="btn btn-primary">Find Places</a>
+          </div>
+
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; font-size: 12px; color: #a8a29e;">
+            <span style="font-weight: 600;">Popular:</span>
+            <button onclick="setSearchFilter('Nine Arch Bridge')" class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;">Nine Arch Bridge</button>
+            <button onclick="setSearchFilter('Sigiriya')" class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;">Sigiriya Rock</button>
+            <button onclick="setSearchFilter('Mirissa')" class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;">Mirissa Whales</button>
+            <button onclick="setSearchFilter('Kandy')" class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;">Temple of Tooth</button>
+            <button onclick="setSearchFilter('Yala')" class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;">Yala Safari</button>
+            <button onclick="setSearchFilter('Galle')" class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;">Galle Fort</button>
+          </div>
+
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <a href="#districts" class="btn btn-accent">Explore 25 Districts</a>
+            <a href="#estimator" class="btn btn-outline">Calculate Trip Budget (Small/Med/High)</a>
+          </div>
+        </div>
+
+        <div class="hero-trust-bar">
+          <div class="trust-item">
+            <h4>📍 25 Districts</h4>
+            <p>All 9 provinces mapped</p>
+          </div>
+          <div class="trust-item">
+            <h4>🛡️ 120+ Certified Drivers</h4>
+            <p>SLTDA registered fleet</p>
+          </div>
+          <div class="trust-item">
+            <h4>⏰ 24/7 Tourist Support</h4>
+            <p>Direct phone & WhatsApp</p>
+          </div>
+          <div class="trust-item">
+            <h4>💰 Transparent Rates</h4>
+            <p>Small, Medium & High stays</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISTRICT EXPLORER SECTION -->
+    <section id="districts" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Sri Lanka District Directory</span>
+          <h2 class="section-title">Precious Places & Unique Gems by District</h2>
+          <p class="section-desc">
+            <strong>Click on any district photograph</strong> to trigger the detailed guide popup with hidden heritage spots, best travel months, and stay options for every budget tier.
+          </p>
+        </div>
+
+        <!-- Region Filter Tabs -->
+        <div class="filter-tabs">
+          <button onclick="filterRegion('All Regions')" class="tab-btn active" data-region="All Regions">All Regions</button>
+          <button onclick="filterRegion('Cultural Triangle')" class="tab-btn" data-region="Cultural Triangle">Cultural Triangle</button>
+          <button onclick="filterRegion('Central Highlands')" class="tab-btn" data-region="Central Highlands">Central Highlands</button>
+          <button onclick="filterRegion('Southern Coast')" class="tab-btn" data-region="Southern Coast">Southern Coast</button>
+          <button onclick="filterRegion('Eastern Paradise')" class="tab-btn" data-region="Eastern Paradise">Eastern Paradise</button>
+          <button onclick="filterRegion('Northern Heritage')" class="tab-btn" data-region="Northern Heritage">Northern Heritage</button>
+          <button onclick="filterRegion('Western Hub')" class="tab-btn" data-region="Western Hub">Western Hub</button>
+        </div>
+
+        <!-- District Cards Grid -->
+        <div id="district-cards-grid" class="grid-3">
+          <!-- Rendered by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANSPORT FACILITIES SECTION -->
+    <section id="transport" class="section" style="background-color: #ffffff;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Transit & Travel Guidance</span>
+          <h2 class="section-title">Transport Facilities & Scenic Chauffeur Services</h2>
+          <p class="section-desc">
+            Whether you dream of leaning out the door of the world-famous blue mountain train, riding a dedicated private AC van with an SLTDA-certified driver, or hailing local tuk-tuks, here is everything you need to navigate Sri Lanka smoothly.
+          </p>
+        </div>
+
+        <div id="transport-grid" class="grid-3">
+          <!-- Rendered by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- HOTEL STAYS & BUDGET TIERS SECTION -->
+    <section id="stays" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Accommodation Guidance</span>
+          <h2 class="section-title">Curated Hotel Options for Small, Medium & High Budgets</h2>
+          <p class="section-desc">
+            Sri Lanka provides phenomenal hospitality across every budget range. Whether you seek a welcoming family-run treehouse in Sigiriya, a boutique courtyard hotel in Galle Fort, or a 5-star private plunge pool villa in Yala, explore our handpicked stays below.
+          </p>
+        </div>
+
+        <!-- Tier Overview Comparison Cards -->
+        <div class="stay-tier-cards">
+          <div class="tier-plan-card">
+            <div>
+              <span class="section-tag">Tier 01 · Backpacker & Eco</span>
+              <h3>Small / Budget Friendly</h3>
+              <div class="tier-range-price">$15 – $35 <span style="font-size: 13px; font-weight: normal; color: var(--text-muted);">/ night</span></div>
+              <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Warm family-run homestays, surf cabins, jungle treehouses, and backpacker hostels with home-cooked Ceylon breakfasts.</p>
+              <ul class="features-list">
+                <li>Authentic homemade meals included</li>
+                <li>Direct insider hiking advice</li>
+                <li>Free Wi-Fi in rooms</li>
+              </ul>
+            </div>
+            <button class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);" onclick="filterStays('small')">Filter Small / Budget</button>
+          </div>
+
+          <div class="tier-plan-card featured">
+            <div>
+              <span class="section-tag" style="color: var(--primary);">Tier 02 · Most Popular</span>
+              <h3>Medium / Comfort & Boutique</h3>
+              <div class="tier-range-price" style="color: var(--primary);">$45 – $95 <span style="font-size: 13px; font-weight: normal; color: var(--text-muted);">/ night</span></div>
+              <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Restored colonial bungalows, beachfront chalets, and tea estate lodges with swimming pools and full air conditioning.</p>
+              <ul class="features-list">
+                <li>Outdoor swimming pools & sundecks</li>
+                <li>Ensuite modern showers & AC</li>
+                <li>On-site chef & English concierge</li>
+              </ul>
+            </div>
+            <button class="btn btn-primary" onclick="filterStays('medium')">Filter Medium / Comfort</button>
+          </div>
+
+          <div class="tier-plan-card">
+            <div>
+              <span class="section-tag" style="color: var(--accent);">Tier 03 · Signature Luxury</span>
+              <h3>High / Luxury & Heritage</h3>
+              <div class="tier-range-price" style="color: var(--accent);">$130 – $450+ <span style="font-size: 13px; font-weight: normal; color: var(--text-muted);">/ night</span></div>
+              <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Geoffrey Bawa architectural icons, private safari tented pavilions in Yala, and tea planter estates with private butler service.</p>
+              <ul class="features-list">
+                <li>Private plunge pool & butler</li>
+                <li>All-inclusive gourmet dining</li>
+                <li>Private wildlife game naturalists</li>
+              </ul>
+            </div>
+            <button class="btn btn-accent" onclick="filterStays('high')">Filter High / Luxury</button>
+          </div>
+        </div>
+
+        <div class="filter-tabs" style="margin-bottom: 24px;">
+          <button onclick="filterStays('all')" class="tab-btn stay-filter-btn active" data-tier="all">All Stays</button>
+          <button onclick="filterStays('small')" class="tab-btn stay-filter-btn" data-tier="small">Small / Budget ($15–$35)</button>
+          <button onclick="filterStays('medium')" class="tab-btn stay-filter-btn" data-tier="medium">Medium / Comfort ($45–$95)</button>
+          <button onclick="filterStays('high')" class="tab-btn stay-filter-btn" data-tier="high">High / Luxury ($130–$450+)</button>
+        </div>
+
+        <div id="stays-grid" class="grid-3">
+          <!-- Rendered by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE BUDGET ESTIMATOR -->
+    <section id="estimator" class="section" style="background-color: #ffffff;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Interactive Trip Cost Estimator</span>
+          <h2 class="section-title">Plan Your Sri Lanka Budget in Seconds</h2>
+          <p class="section-desc">
+            Customize your journey duration, guest count, stay category (Small, Medium, or High), and transport preference. Get a transparent, live price estimate without hidden surprises.
+          </p>
+        </div>
+
+        <div class="calc-wrapper">
+          <div class="calc-panel">
+            <div class="calc-group">
+              <label>1. Trip Duration: <span id="est-days-display" style="color: var(--primary); font-weight: 800;">10 Days</span></label>
+              <div class="btn-group">
+                <button onclick="setEstDays(3)" class="calc-opt-btn est-d-btn">3 Days</button>
+                <button onclick="setEstDays(7)" class="calc-opt-btn est-d-btn">7 Days</button>
+                <button onclick="setEstDays(10)" class="calc-opt-btn est-d-btn active">10 Days</button>
+                <button onclick="setEstDays(14)" class="calc-opt-btn est-d-btn">14 Days</button>
+                <button onclick="setEstDays(21)" class="calc-opt-btn est-d-btn">21 Days</button>
+              </div>
+            </div>
+
+            <div class="calc-group">
+              <label>2. Travelers: <span id="est-travelers-display" style="color: var(--primary); font-weight: 800;">2 Guests</span> (<span id="est-rooms-display">1 Room</span>)</label>
+              <div class="btn-group">
+                <button onclick="setEstTravelers(1)" class="calc-opt-btn est-t-btn">Solo (1)</button>
+                <button onclick="setEstTravelers(2)" class="calc-opt-btn est-t-btn active">Couple (2)</button>
+                <button onclick="setEstTravelers(4)" class="calc-opt-btn est-t-btn">Family (4)</button>
+                <button onclick="setEstTravelers(6)" class="calc-opt-btn est-t-btn">Group (6)</button>
+              </div>
+            </div>
+
+            <div class="calc-group">
+              <label>3. Accommodation Tier</label>
+              <div class="btn-group" style="grid-template-columns: repeat(3, 1fr);">
+                <button onclick="setEstTier('small')" class="calc-opt-btn est-tier-btn" data-tier="small">
+                  <strong>Small / Budget</strong><br>
+                  <small id="tier-price-small">~$26/nt</small>
+                </button>
+                <button onclick="setEstTier('medium')" class="calc-opt-btn est-tier-btn active" data-tier="medium">
+                  <strong>Medium / Comfort</strong><br>
+                  <small id="tier-price-medium">~$75/nt</small>
+                </button>
+                <button onclick="setEstTier('high')" class="calc-opt-btn est-tier-btn" data-tier="high">
+                  <strong>High / Luxury</strong><br>
+                  <small id="tier-price-high">~$280/nt</small>
+                </button>
+              </div>
+            </div>
+
+            <div class="calc-group" style="margin-bottom: 0;">
+              <label>4. Transport Preference</label>
+              <div class="btn-group" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+                <button onclick="setEstTransport('chauffeur-van')" class="calc-opt-btn est-tr-btn active" data-transport="chauffeur-van">
+                  <strong>Dedicated Chauffeur</strong><br>
+                  <small>Private AC Car/Van</small>
+                </button>
+                <button onclick="setEstTransport('train-tuktuk')" class="calc-opt-btn est-tr-btn" data-transport="train-tuktuk">
+                  <strong>Scenic Train & Tuk-Tuk</strong><br>
+                  <small>Mountain rail passes</small>
+                </button>
+                <button onclick="setEstTransport('hybrid')" class="calc-opt-btn est-tr-btn" data-transport="hybrid">
+                  <strong>Hybrid Plan</strong><br>
+                  <small>Train + Taxi transfers</small>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-summary">
+            <div>
+              <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: #fbbf24;">Estimated Total Trip Investment</span>
+              <div class="summary-big-total" id="est-grand-total">$1,720</div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: #1c1917; padding: 12px; border-radius: 10px; margin: 20px 0; font-size: 12px;">
+                <div>
+                  <span style="color: #a8a29e; display: block;">Per Person:</span>
+                  <strong style="font-size: 15px;" id="est-per-person-total">$860</strong>
+                </div>
+                <div>
+                  <span style="color: #a8a29e; display: block;">Per Person / Day:</span>
+                  <strong style="font-size: 15px; color: #34d399;" id="est-per-person-day">$86</strong>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 24px;">
+                <p style="font-size: 11px; font-weight: 700; color: #a8a29e; text-transform: uppercase; margin-bottom: 6px;">Estimated Breakdown:</p>
+                <div class="summary-row"><span>Accommodation:</span><strong id="est-stay-breakdown">$750</strong></div>
+                <div class="summary-row"><span>Transport & Fuel:</span><strong id="est-tr-breakdown">$700</strong></div>
+                <div class="summary-row"><span>Meals & Teas:</span><strong id="est-meals-breakdown">$560</strong></div>
+                <div class="summary-row"><span>Park Tickets & Experiences:</span><strong id="est-act-breakdown">$280</strong></div>
+              </div>
+            </div>
+
+            <a href="#partner-contact" class="btn btn-accent" style="width: 100%; padding: 14px;">Lock In This Itinerary & Request Booking</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section id="reviews" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Verified Traveler Stories</span>
+          <h2 class="section-title">Real Experiences Across Sri Lanka’s Districts</h2>
+          <p class="section-desc">4.9 / 5.0 Average Rating across 420+ International Guided Tours</p>
+        </div>
+
+        <div id="reviews-grid" class="reviews-grid">
+          <!-- Rendered by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQS SECTION -->
+    <section id="faqs" class="section" style="background-color: #ffffff;">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-left: auto; margin-right: auto;">
+          <span class="section-tag">Traveler Information Desk</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">Clear answers on visas, seasonal monsoons, budget ranges, and partnering with our agency.</p>
+        </div>
+
+        <div id="faqs-list" class="faq-list">
+          <!-- Rendered by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- DEDICATED PARTNER & CONTACT HUB -->
+    <section id="partner-contact" class="partner-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" style="color: #fbbf24;">Direct Coordination & Work Together</span>
+          <h2 class="section-title" style="color: #ffffff;">Contact Numbers for Travellers, Taxi Owners & Hotel Managers</h2>
+          <p class="section-desc" style="color: #d6d3d1;">
+            We operate dedicated hotlines and partnership desks. Whether you are an international traveler planning your dream island holiday, a licensed call taxi owner looking to join our tour fleet, or a hotel manager wishing to list your property, connect with our team directly.
+          </p>
+        </div>
+
+        <!-- 3 Contact Cards -->
+        <div class="partner-contact-cards">
+          <!-- 1. Travellers -->
+          <div class="contact-card">
+            <div>
+              <span class="contact-badge badge-green">For International Travellers</span>
+              <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">24/7 Island Holiday Concierge</h3>
+              <p>Custom itineraries, blue train reservations, airport pickups, and budget-friendly stay options across all 25 districts.</p>
+              <div style="font-size: 12px; color: #d6d3d1; margin-bottom: 16px;">
+                <span style="display: block; color: #a8a29e;">24/7 Booking Hotline:</span>
+                <a href="tel:+94112345678" class="contact-phone">+94 11 234 5678</a>
+                <span style="display: block; color: #34d399; font-weight: 700;">WhatsApp: +94 77 123 4567</span>
+                <span style="color: #a8a29e;">trips@ceylonodyssey.lk</span>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="switchContactTab('traveler')">Traveler Booking Form</button>
+          </div>
+
+          <!-- 2. Call Taxi Owners -->
+          <div class="contact-card">
+            <div>
+              <span class="contact-badge badge-amber">For Call Taxi & Chauffeur Owners</span>
+              <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Join Our Island Tour Fleet</h3>
+              <p>Partner with us to receive regular weekly airport transfers and multi-day island tour assignments with guaranteed prompt settlement.</p>
+              <div style="font-size: 12px; color: #d6d3d1; margin-bottom: 16px;">
+                <span style="display: block; color: #a8a29e;">Fleet Operations Line:</span>
+                <a href="tel:+94718882345" class="contact-phone">+94 71 888 2345</a>
+                <span style="display: block; color: #34d399; font-weight: 700;">Fleet WhatsApp: +94 71 888 2346</span>
+                <span style="color: #a8a29e;">fleet@ceylonodyssey.lk</span>
+              </div>
+            </div>
+            <button class="btn btn-accent" onclick="switchContactTab('taxi')">Driver Registration Form</button>
+          </div>
+
+          <!-- 3. Hotel Managers -->
+          <div class="contact-card">
+            <div>
+              <span class="contact-badge badge-sky">For Hotel & Villa Managers</span>
+              <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">List Property & Direct Placements</h3>
+              <p>Connect your boutique hotel, eco-homestay, or 5-star resort with incoming international travelers without exorbitant OTA platform cuts.</p>
+              <div style="font-size: 12px; color: #d6d3d1; margin-bottom: 16px;">
+                <span style="display: block; color: #a8a29e;">Hotel Contracting Desk:</span>
+                <a href="tel:+94815557890" class="contact-phone">+94 81 555 7890</a>
+                <span style="display: block; color: #34d399; font-weight: 700;">Partner WhatsApp: +94 81 555 7891</span>
+                <span style="color: #a8a29e;">hotels@ceylonodyssey.lk</span>
+              </div>
+            </div>
+            <button class="btn btn-outline" style="background: #0284c7; color: #fff; border: none;" onclick="switchContactTab('hotel')">Hotel Onboarding Form</button>
+          </div>
+        </div>
+
+        <!-- Coordination Form -->
+        <div class="form-box">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #292524; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <h3 style="font-size: 18px; font-weight: 700;">Online Coordination & Registration Portal</h3>
+              <p style="font-size: 12px; color: #a8a29e;">Select your role below to submit an inquiry to our Colombo team.</p>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <button onclick="switchContactTab('traveler')" class="btn btn-primary tab-switch-btn" data-tab="traveler" style="font-size: 12px;">I Am a Traveller</button>
+              <button onclick="switchContactTab('taxi')" class="btn btn-outline tab-switch-btn" data-tab="taxi" style="font-size: 12px;">Call Taxi Owner</button>
+              <button onclick="switchContactTab('hotel')" class="btn btn-outline tab-switch-btn" data-tab="hotel" style="font-size: 12px;">Hotel Manager</button>
+            </div>
+          </div>
+
+          <form id="partner-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group">
+                <label id="form-name-label">Full Name *</label>
+                <input type="text" required id="form-name" placeholder="e.g., Sarah Jenkins" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Contact Phone / WhatsApp *</label>
+                <input type="tel" required id="form-phone" placeholder="e.g., +94 77 000 0000" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" required id="form-email" placeholder="name@domain.com" class="form-control">
+              </div>
+              <div class="form-group">
+                <label id="form-district-label">Primary District of Interest *</label>
+                <select id="form-district" class="form-control">
+                  <option value="All Island Loop">All Island Highlight Loop</option>
+                  <option value="Matale (Sigiriya & Dambulla)">Matale (Sigiriya & Dambulla)</option>
+                  <option value="Kandy">Kandy</option>
+                  <option value="Badulla & Ella">Badulla & Ella</option>
+                  <option value="Galle">Galle</option>
+                  <option value="Nuwara Eliya">Nuwara Eliya</option>
+                  <option value="Matara & Mirissa">Matara & Mirissa</option>
+                  <option value="Hambantota & Yala">Hambantota & Yala</option>
+                  <option value="Trincomalee">Trincomalee</option>
+                  <option value="Jaffna">Jaffna</option>
+                  <option value="Colombo">Colombo</option>
+                </select>
+              </div>
+              <div class="form-group" id="dynamic-field-1">
+                <label>Preferred Budget Tier</label>
+                <select id="form-tier" class="form-control">
+                  <option value="Small / Budget">Small / Budget ($15–$35/night)</option>
+                  <option value="Medium / Comfort" selected>Medium / Comfort ($45–$95/night)</option>
+                  <option value="High / Luxury">High / Luxury ($130–$450+/night)</option>
+                </select>
+              </div>
+              <div class="form-group" id="dynamic-field-2">
+                <label>Number of Travelers</label>
+                <input type="number" min="1" max="20" value="2" id="form-guests" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px;">
+              <label id="form-notes-label">Trip Dates, Preferred Places & Special Requests</label>
+              <textarea rows="3" id="form-notes" placeholder="e.g., We are visiting for 10 days in April, wanting to take the blue train and visit Sigiriya..." class="form-control"></textarea>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+              <span style="font-size: 11px; color: #a8a29e;">📍 Head Office: Galle Face, Colombo 03 & Regional Branch in Kandy</span>
+              <button type="submit" id="form-submit-btn" class="btn btn-primary" style="padding: 12px 24px;">Submit Traveler Inquiry</button>
+            </div>
+          </form>
+
+          <div id="form-success-msg" style="display: none; text-align: center; padding: 36px 0;">
+            <div style="font-size: 36px; margin-bottom: 8px;">✅</div>
+            <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 6px;">Inquiry Received Successfully!</h4>
+            <p style="font-size: 13px; color: #d6d3d1; margin-bottom: 16px;">Our Sri Lanka coordinator will contact you via Phone/WhatsApp within 30 minutes.</p>
+            <button class="btn btn-outline" onclick="resetContactForm()">Submit Another Request</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <div>
+          <strong style="color: #ffffff; font-size: 14px;">Ceylon Odyssey Travel Agency Ltd.</strong>
+          <p style="font-size: 11px; color: #78716c; margin-top: 4px;">Registered Agency: TS/TA/2014/1982 · Galle Face, Colombo 03, Sri Lanka</p>
+        </div>
+        <div>
+          <span>Tourist Police: <strong style="color: #fbbf24; font-family: monospace;">1912</strong></span>
+          <span style="margin: 0 8px;">·</span>
+          <span>Emergency Ambulance: <strong style="color: #fbbf24; font-family: monospace;">1990</strong></span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- POPUP MODAL FOR DISTRICT DETAILS (AS REQUESTED) -->
+    <div id="district-modal" class="modal-overlay" onclick="if(event.target === this) closeDistrictModal();">
+      <div class="modal-card">
+        <button class="modal-close-btn" onclick="closeDistrictModal()" title="Close popup">✕</button>
+
+        <div class="modal-hero">
+          <img id="modal-img" src="" alt="District">
+          <div class="modal-hero-content">
+            <div id="modal-region-province" style="font-size: 12px; font-weight: 700; color: #fde68a; text-transform: uppercase;"></div>
+            <h2 id="modal-title"></h2>
+            <p id="modal-tagline" style="font-size: 14px; color: #e7e5e4;"></p>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-section">
+            <h3 class="modal-section-title">District Overview & Character</h3>
+            <p id="modal-intro" style="font-size: 14px; color: #44403c; line-height: 1.6;"></p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; background: #fafaf9; border: 1px solid #e7e5e4; padding: 14px; border-radius: 10px; margin-bottom: 24px; font-size: 13px;">
+            <div><strong>Best Season:</strong> <span id="modal-season" style="color: #57534e;"></span></div>
+            <div><strong>Recommended Stay:</strong> <span id="modal-days" style="color: #57534e;"></span></div>
+            <div><strong>Climate:</strong> <span id="modal-weather" style="color: #57534e;"></span></div>
+          </div>
+
+          <div class="modal-section">
+            <h4 style="font-size: 16px; font-weight: 800; margin-bottom: 4px;">Most Precious & Unique Places</h4>
+            <p style="font-size: 12px; color: #78716c; margin-bottom: 12px;">Top heritage wonders, temples, and hiking spots you must visit.</p>
+            <div id="modal-places-grid" class="precious-places-grid"></div>
+          </div>
+
+          <div class="callout-box callout-emerald">
+            <strong style="display: block; margin-bottom: 4px;">🚗 Travel Guidance & Transport Facilities:</strong>
+            <p id="modal-transit"></p>
+          </div>
+
+          <div class="callout-box callout-amber">
+            <strong style="display: block; margin-bottom: 4px;">🍲 Must-Try Authentic Culinary Delicacies:</strong>
+            <p id="modal-food"></p>
+          </div>
+
+          <div class="modal-section">
+            <h4 style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--text-main);">Stay Budget Tiers (Average per night)</h4>
+            <div id="modal-budget-grid" class="tier-boxes-grid"></div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 10px; padding-top: 16px; border-top: 1px solid #e7e5e4;">
+            <button class="btn btn-outline" style="color: #57534e; border-color: #d6d3d1;" onclick="closeDistrictModal()">Close</button>
+            <button class="btn btn-primary" onclick="planForCurrentModalDistrict()">Plan Trip to This District</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PURE JAVASCRIPT LOGIC -->
+    <script src="./script.js"></script>
+  </body>
+</html>
+
+

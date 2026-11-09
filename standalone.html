@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ceylon Odyssey - Sri Lanka Travel & District Explorer</title>
+  <meta name="description" content="Explore precious and unique places across Sri Lanka's districts, scenic transport guides, budget hotel options, and traveler coordination.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN (Works offline or online in any browser) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['Outfit', '"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            ceylon: {
+              50: '#f0fdf4',
+              800: '#166534',
+              900: '#14532d',
+              950: '#052e16',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    h1, h2, h3, h4, .font-display { font-family: 'Outfit', sans-serif; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-stone-50 text-stone-900 selection:bg-emerald-800 selection:text-white">
+
+  <!-- TOP EMERGENCY & HOTLINE BAR -->
+  <div class="bg-stone-950 text-stone-200 text-xs py-2 px-4 border-b border-stone-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-4 text-xs font-medium">
+        <span class="flex items-center gap-1.5 text-amber-400">
+          <span>📞</span>
+          <span>24/7 Traveler Hotline: <strong class="text-white font-mono">+94 11 234 5678</strong></span>
+        </span>
+        <span class="hidden sm:inline text-stone-600">·</span>
+        <span class="hidden sm:inline text-stone-300">Taxi & Hotel Partner Desk: <strong class="text-white font-mono">+94 71 888 2345</strong></span>
+      </div>
+      <div class="flex items-center gap-3 text-xs text-stone-300">
+        <span class="hidden md:inline">SLTDA Tourism Licensed Agency TS/TA/2014/1982</span>
+        <span class="text-emerald-400 font-semibold">WhatsApp: +94 77 123 4567</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-8">
+      <!-- Brand Wordmark -->
+      <a href="#hero" class="flex items-center gap-2 text-xl font-bold tracking-tight text-stone-900 shrink-0">
+        <span class="w-8 h-8 rounded-lg bg-emerald-800 text-amber-300 flex items-center justify-center font-bold text-base shadow-sm">
+          🧭
+        </span>
+        <span class="font-display">Ceylon Odyssey</span>
+      </a>
+
+      <!-- Clean Single-Line Nav Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-stone-600">
+        <a href="#districts" class="hover:text-emerald-800 transition-colors shrink-0">District Explorer</a>
+        <a href="#transport" class="hover:text-emerald-800 transition-colors shrink-0">Transport & Chauffeurs</a>
+        <a href="#stays" class="hover:text-emerald-800 transition-colors shrink-0">Hotel Stays & Budget</a>
+        <a href="#estimator" class="hover:text-emerald-800 transition-colors shrink-0">Cost Estimator</a>
+        <a href="#reviews" class="hover:text-emerald-800 transition-colors shrink-0">Reviews</a>
+        <a href="#partner-contact" class="hover:text-emerald-800 transition-colors text-emerald-800 font-bold shrink-0">Partner With Us</a>
+      </nav>
+
+      <!-- Currency Switcher & Primary Action -->
+      <div class="flex items-center gap-3 shrink-0">
+        <select id="currency-select" onchange="changeCurrency(this.value)" class="text-xs font-semibold bg-stone-100 hover:bg-stone-200 text-stone-800 rounded-md py-1.5 px-2.5 border border-stone-200 cursor-pointer focus:outline-none">
+          <option value="USD">USD ($)</option>
+          <option value="LKR">LKR (Rs)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+        </select>
+        <a href="#partner-contact" class="px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-emerald-800 hover:bg-emerald-900 rounded-lg shadow-sm transition-all whitespace-nowrap">
+          Plan My Journey
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative bg-stone-950 text-white overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1600&q=80" alt="Sigiriya Sunrise Sri Lanka" class="w-full h-full object-cover object-center opacity-40">
+      <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/60 to-stone-900/40"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wide uppercase text-amber-300 mb-3">
+          <span>✨</span>
+          <span>Official Sri Lanka Travel & District Guide</span>
+          <span>·</span>
+          <span>Est. 2014</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-5 leading-tight font-display">
+          Discover the Precious & Unique Wonders in Every District of Sri Lanka
+        </h1>
+
+        <p class="text-base sm:text-lg text-stone-200 font-normal leading-relaxed mb-8 max-w-2xl">
+          From the cloud-forest peaks of Ella and ancient citadels of Sigiriya to turquoise whale sanctuaries in Mirissa. We provide authentic local guidance, seamless chauffeur transport, and handpicked stays for small, medium, and high budgets.
+        </p>
+
+        <!-- Search input -->
+        <div class="mb-6 max-w-2xl">
+          <div class="flex flex-col sm:flex-row items-stretch bg-white rounded-xl p-1.5 shadow-2xl border border-stone-200">
+            <div class="flex-1 flex items-center px-3 py-2 text-stone-700">
+              <span class="text-stone-400 mr-2.5">🔍</span>
+              <input type="text" id="district-search-input" oninput="handleSearch(this.value)" placeholder="Search district or place (e.g., Sigiriya, Ella, Galle Fort, Kandy)..." class="w-full text-sm text-stone-900 placeholder:text-stone-400 bg-transparent focus:outline-none">
+            </div>
+            <a href="#districts" class="mt-2 sm:mt-0 px-6 py-3 bg-emerald-800 hover:bg-emerald-900 text-white text-sm font-semibold rounded-lg flex items-center justify-center gap-2 transition-all">
+              <span>Find Places</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Search Tags -->
+        <div class="flex flex-wrap items-center gap-2 text-xs text-stone-300 mb-8">
+          <span class="font-medium text-stone-400">Popular:</span>
+          <button onclick="setSearchFilter('Nine Arch Bridge')" class="bg-white/10 hover:bg-white/20 text-white rounded-md px-2.5 py-1 text-xs">Nine Arch Bridge</button>
+          <button onclick="setSearchFilter('Sigiriya')" class="bg-white/10 hover:bg-white/20 text-white rounded-md px-2.5 py-1 text-xs">Sigiriya Rock</button>
+          <button onclick="setSearchFilter('Mirissa')" class="bg-white/10 hover:bg-white/20 text-white rounded-md px-2.5 py-1 text-xs">Mirissa Whales</button>
+          <button onclick="setSearchFilter('Kandy')" class="bg-white/10 hover:bg-white/20 text-white rounded-md px-2.5 py-1 text-xs">Temple of Tooth</button>
+          <button onclick="setSearchFilter('Yala')" class="bg-white/10 hover:bg-white/20 text-white rounded-md px-2.5 py-1 text-xs">Yala Safari</button>
+          <button onclick="setSearchFilter('Galle')" class="bg-white/10 hover:bg-white/20 text-white rounded-md px-2.5 py-1 text-xs">Galle Fort</button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="#districts" class="px-6 py-3.5 bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold text-sm rounded-lg shadow-lg flex items-center gap-2 transition-transform hover:-translate-y-0.5">
+            <span>Explore 25 Districts</span>
+          </a>
+          <a href="#estimator" class="px-6 py-3.5 bg-stone-900/80 hover:bg-stone-800 border border-stone-600 text-white font-semibold text-sm rounded-lg backdrop-blur-sm transition-colors">
+            Calculate Trip Budget (Small/Med/High)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust strip -->
+    <div class="relative z-10 bg-stone-950/90 border-t border-stone-800 py-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-stone-300">
+        <div>
+          <p class="text-sm font-bold text-white">📍 25 Districts</p>
+          <p class="text-xs text-stone-400">All 9 provinces mapped</p>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-white">🛡️ 120+ Certified Drivers</p>
+          <p class="text-xs text-stone-400">SLTDA registered fleet</p>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-white">⏰ 24/7 Tourist Support</p>
+          <p class="text-xs text-stone-400">Direct phone & WhatsApp</p>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-white">💰 Transparent Rates</p>
+          <p class="text-xs text-stone-400">Small, Medium & High stays</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISTRICT EXPLORER SECTION -->
+  <section id="districts" class="py-16 sm:py-24 bg-stone-50 border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-800 mb-2">
+          <span>✨ Sri Lanka District Directory</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight font-display">
+          Precious Places & Unique Gems by District
+        </h2>
+        <p class="mt-3 text-stone-600 text-base leading-relaxed">
+          <strong>Click on any district photograph</strong> to trigger the detailed guide popup with hidden heritage spots, best travel months, and stay options for every budget tier.
+        </p>
+      </div>
+
+      <!-- Region Filter Tabs -->
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-3 mb-8 no-scrollbar" id="region-filter-tabs">
+        <button onclick="filterRegion('All Regions')" class="region-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap bg-emerald-800 text-white shadow-sm" data-region="All Regions">All Regions</button>
+        <button onclick="filterRegion('Cultural Triangle')" class="region-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap bg-white text-stone-700 hover:bg-stone-200 border border-stone-200" data-region="Cultural Triangle">Cultural Triangle</button>
+        <button onclick="filterRegion('Central Highlands')" class="region-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap bg-white text-stone-700 hover:bg-stone-200 border border-stone-200" data-region="Central Highlands">Central Highlands</button>
+        <button onclick="filterRegion('Southern Coast')" class="region-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap bg-white text-stone-700 hover:bg-stone-200 border border-stone-200" data-region="Southern Coast">Southern Coast</button>
+        <button onclick="filterRegion('Eastern Paradise')" class="region-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap bg-white text-stone-700 hover:bg-stone-200 border border-stone-200" data-region="Eastern Paradise">Eastern Paradise</button>
+        <button onclick="filterRegion('Northern Heritage')" class="region-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap bg-white text-stone-700 hover:bg-stone-200 border border-stone-200" data-region="Northern Heritage">Northern Heritage</button>
+        <button onclick="filterRegion('Western Hub')" class="region-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap bg-white text-stone-700 hover:bg-stone-200 border border-stone-200" data-region="Western Hub">Western Hub</button>
+      </div>
+
+      <!-- District Cards Grid Container -->
+      <div id="district-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Rendered dynamically by JavaScript below -->
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPORT FACILITIES SECTION -->
+  <section id="transport" class="py-16 sm:py-24 bg-white border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-800 mb-2">
+          <span>🚂 Sri Lanka Transit & Travel Guidance</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight font-display">
+          Transport Facilities & Scenic Chauffeur Services
+        </h2>
+        <p class="mt-3 text-stone-600 text-base leading-relaxed">
+          Whether you dream of leaning out the door of the world-famous blue mountain train, riding a dedicated private AC van with an SLTDA-certified driver, or hailing local tuk-tuks, here is everything you need to navigate Sri Lanka smoothly.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="transport-grid">
+        <!-- Transport Cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- HOTEL STAYS & BUDGET TIERS SECTION -->
+  <section id="stays" class="py-16 sm:py-24 bg-stone-50 border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-800 mb-2">
+          <span>🏨 Accommodation & Stay Guidance</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight font-display">
+          Curated Hotel Options for Small, Medium & High Budgets
+        </h2>
+        <p class="mt-3 text-stone-600 text-base leading-relaxed">
+          Sri Lanka provides phenomenal hospitality across every budget range. Whether you seek a welcoming family-run treehouse in Sigiriya, a boutique courtyard hotel in Galle Fort, or a 5-star private plunge pool villa in Yala, explore our handpicked stays below.
+        </p>
+      </div>
+
+      <!-- Tier Filter Buttons -->
+      <div class="flex items-center gap-2 mb-8">
+        <span class="text-xs font-medium text-stone-500">Filter Tier:</span>
+        <div class="flex items-center gap-1 bg-stone-200/60 p-1 rounded-lg">
+          <button onclick="filterStays('all')" id="stay-tab-all" class="stay-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md bg-white text-stone-900 shadow-xs">All Stays</button>
+          <button onclick="filterStays('small')" id="stay-tab-small" class="stay-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md text-stone-600 hover:text-stone-900">Small / Budget ($15-$35)</button>
+          <button onclick="filterStays('medium')" id="stay-tab-medium" class="stay-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md text-stone-600 hover:text-stone-900">Medium / Comfort ($45-$95)</button>
+          <button onclick="filterStays('high')" id="stay-tab-high" class="stay-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md text-stone-600 hover:text-stone-900">High / Luxury ($130-$450+)</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="stays-grid">
+        <!-- Stay cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE BUDGET ESTIMATOR -->
+  <section id="estimator" class="py-16 sm:py-24 bg-white border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-800 mb-2">
+          <span>🧮 Interactive Trip Cost Estimator</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight font-display">
+          Plan Your Sri Lanka Budget in Seconds
+        </h2>
+        <p class="mt-3 text-stone-600 text-base leading-relaxed">
+          Customize your journey duration, guest count, stay category (Small, Medium, or High), and transport preference. Get a transparent, live price estimate without hidden surprises.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div class="lg:col-span-7 bg-stone-50 rounded-2xl p-6 sm:p-8 border border-stone-200">
+          <div class="space-y-6">
+            <!-- Days -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-xs font-bold uppercase tracking-wider text-stone-700">1. Trip Duration: <span id="est-days-display" class="text-emerald-800 font-extrabold">10 Days</span></label>
+                <span class="text-xs text-stone-500">Island loop: 7–14 days</span>
+              </div>
+              <div class="grid grid-cols-5 gap-2" id="est-days-buttons">
+                <button onclick="setEstDays(3)" class="est-d-btn py-2 text-xs font-semibold rounded-lg border bg-white text-stone-700 border-stone-200">3 Days</button>
+                <button onclick="setEstDays(7)" class="est-d-btn py-2 text-xs font-semibold rounded-lg border bg-white text-stone-700 border-stone-200">7 Days</button>
+                <button onclick="setEstDays(10)" class="est-d-btn py-2 text-xs font-semibold rounded-lg border bg-emerald-800 text-white border-emerald-800 shadow-xs">10 Days</button>
+                <button onclick="setEstDays(14)" class="est-d-btn py-2 text-xs font-semibold rounded-lg border bg-white text-stone-700 border-stone-200">14 Days</button>
+                <button onclick="setEstDays(21)" class="est-d-btn py-2 text-xs font-semibold rounded-lg border bg-white text-stone-700 border-stone-200">21 Days</button>
+              </div>
+            </div>
+
+            <!-- Travelers -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-xs font-bold uppercase tracking-wider text-stone-700">2. Travelers: <span id="est-travelers-display" class="text-emerald-800 font-extrabold">2 Guests</span></label>
+                <span class="text-xs text-stone-500" id="est-rooms-display">1 Room calculated</span>
+              </div>
+              <div class="grid grid-cols-4 gap-2" id="est-traveler-buttons">
+                <button onclick="setEstTravelers(1)" class="est-t-btn py-2 text-xs font-semibold rounded-lg border bg-white text-stone-700 border-stone-200">Solo (1)</button>
+                <button onclick="setEstTravelers(2)" class="est-t-btn py-2 text-xs font-semibold rounded-lg border bg-emerald-800 text-white border-emerald-800 shadow-xs">Couple (2)</button>
+                <button onclick="setEstTravelers(4)" class="est-t-btn py-2 text-xs font-semibold rounded-lg border bg-white text-stone-700 border-stone-200">Family (4)</button>
+                <button onclick="setEstTravelers(6)" class="est-t-btn py-2 text-xs font-semibold rounded-lg border bg-white text-stone-700 border-stone-200">Group (6)</button>
+              </div>
+            </div>
+
+            <!-- Tier -->
+            <div>
+              <label class="text-xs font-bold uppercase tracking-wider text-stone-700 block mb-2">3. Accommodation Tier</label>
+              <div class="grid grid-cols-3 gap-3">
+                <button onclick="setEstTier('small')" id="est-tier-small" class="est-tier-btn p-3 rounded-xl border text-left bg-white border-stone-200">
+                  <span class="block text-xs font-bold text-stone-900">Small / Budget</span>
+                  <span class="text-[11px] text-stone-500 mt-0.5 block">Eco treehouses & homestays</span>
+                  <span class="text-xs font-extrabold text-emerald-800 mt-2 block" id="tier-price-small">~$26/night</span>
+                </button>
+                <button onclick="setEstTier('medium')" id="est-tier-medium" class="est-tier-btn p-3 rounded-xl border text-left bg-white border-emerald-700 ring-2 ring-emerald-700/20 shadow-xs">
+                  <span class="block text-xs font-bold text-stone-900">Medium / Comfort</span>
+                  <span class="text-[11px] text-stone-500 mt-0.5 block">Boutique hotels with pool, AC</span>
+                  <span class="text-xs font-extrabold text-emerald-800 mt-2 block" id="tier-price-medium">~$75/night</span>
+                </button>
+                <button onclick="setEstTier('high')" id="est-tier-high" class="est-tier-btn p-3 rounded-xl border text-left bg-white border-stone-200">
+                  <span class="block text-xs font-bold text-stone-900">High / Luxury</span>
+                  <span class="text-[11px] text-stone-500 mt-0.5 block">5-star heritage villas, butler</span>
+                  <span class="text-xs font-extrabold text-amber-700 mt-2 block" id="tier-price-high">~$280/night</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Transport mode -->
+            <div>
+              <label class="text-xs font-bold uppercase tracking-wider text-stone-700 block mb-2">4. Transport Preference</label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <button onclick="setEstTransport('chauffeur-van')" id="est-tr-chauffeur" class="est-tr-btn p-3 rounded-xl border text-left bg-white border-emerald-700 ring-2 ring-emerald-700/20 shadow-xs">
+                  <span class="block text-xs font-bold text-stone-900">Dedicated Chauffeur</span>
+                  <span class="text-[11px] text-stone-500">Private AC van, fuel & tolls</span>
+                </button>
+                <button onclick="setEstTransport('train-tuktuk')" id="est-tr-train" class="est-tr-btn p-3 rounded-xl border text-left bg-white border-stone-200">
+                  <span class="block text-xs font-bold text-stone-900">Scenic Train & Tuk-Tuk</span>
+                  <span class="text-[11px] text-stone-500">Scenic rail passes + local hops</span>
+                </button>
+                <button onclick="setEstTransport('hybrid')" id="est-tr-hybrid" class="est-tr-btn p-3 rounded-xl border text-left bg-white border-stone-200">
+                  <span class="block text-xs font-bold text-stone-900">Hybrid Plan</span>
+                  <span class="text-[11px] text-stone-500">Train for hills + taxis for coast</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculated Summary Box -->
+        <div class="lg:col-span-5 bg-stone-900 text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl border border-stone-800">
+          <div>
+            <div class="pb-4 border-b border-stone-800 mb-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 block">Estimated Total Trip Investment</span>
+              <h3 class="text-3xl sm:text-4xl font-extrabold text-white mt-1 tabular-nums font-display" id="est-grand-total">$1,720</h3>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 p-3.5 bg-stone-800/80 rounded-xl mb-6 text-xs">
+              <div>
+                <span class="text-stone-400 block">Per Person Total:</span>
+                <strong class="text-sm font-bold text-white tabular-nums" id="est-per-person-total">$860</strong>
+              </div>
+              <div>
+                <span class="text-stone-400 block">Per Person / Day:</span>
+                <strong class="text-sm font-bold text-emerald-400 tabular-nums" id="est-per-person-day">$86</strong>
+              </div>
+            </div>
+
+            <div class="space-y-2.5 text-xs text-stone-300 mb-6">
+              <p class="font-bold uppercase tracking-wider text-stone-400 text-[11px]">Breakdown:</p>
+              <div class="flex justify-between"><span>Accommodation:</span><span class="font-semibold text-white tabular-nums" id="est-stay-breakdown">$750</span></div>
+              <div class="flex justify-between"><span>Transport & Fuel:</span><span class="font-semibold text-white tabular-nums" id="est-tr-breakdown">$700</span></div>
+              <div class="flex justify-between"><span>Meals & Teas:</span><span class="font-semibold text-white tabular-nums" id="est-meals-breakdown">$560</span></div>
+              <div class="flex justify-between"><span>Park Tickets & Experiences:</span><span class="font-semibold text-white tabular-nums" id="est-act-breakdown">$280</span></div>
+            </div>
+          </div>
+
+          <a href="#partner-contact" class="w-full py-3.5 bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5">
+            <span>Lock In This Itinerary & Request Booking</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS & FAQS -->
+  <section id="reviews" class="py-16 sm:py-24 bg-stone-50 border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-800 block mb-2">💬 Verified Traveler Stories</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight font-display">Real Experiences Across Sri Lanka’s Districts</h2>
+        <p class="text-stone-600 text-sm mt-1">4.9 / 5.0 Average Rating across 420+ International Guided Tours</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="reviews-grid">
+        <!-- Review Cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQS -->
+  <section id="faqs" class="py-16 sm:py-24 bg-white border-b border-stone-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-800 block mb-1">❓ Traveler Information Desk</span>
+        <h2 class="text-3xl font-extrabold text-stone-900 tracking-tight font-display">Frequently Asked Questions</h2>
+        <p class="text-stone-600 text-xs sm:text-sm mt-1">Clear answers on visas, seasonal monsoons, budget ranges, and partnering with our agency.</p>
+      </div>
+
+      <div class="space-y-3" id="faqs-list">
+        <!-- FAQ Accordion -->
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER AND CONTACT COORDINATION HUB -->
+  <section id="partner-contact" class="py-16 sm:py-24 bg-stone-900 text-white border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-amber-400 mb-2">
+          <span>📞 Direct Coordination & Work Together</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
+          Contact Numbers for Travellers, Taxi Owners & Hotel Managers
+        </h2>
+        <p class="mt-3 text-stone-300 text-base leading-relaxed">
+          We operate dedicated hotlines and partnership desks. Whether you are an international traveler planning your dream island holiday, a licensed call taxi owner looking to join our tour fleet, or a hotel manager wishing to list your property, connect with our team directly.
+        </p>
+      </div>
+
+      <!-- 3 Direct Contact Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <!-- For Travellers -->
+        <div class="p-6 rounded-2xl bg-stone-800/80 border border-stone-700/80 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 block mb-1">For International Travellers</span>
+            <h3 class="text-lg font-bold text-white font-display mb-2">24/7 Island Holiday Concierge</h3>
+            <p class="text-xs text-stone-300 mb-4 leading-relaxed">Custom itineraries, blue train reservations, airport pickups, and budget-friendly stay options across all 25 districts.</p>
+            <div class="space-y-2 text-xs text-stone-300">
+              <p>24/7 Hotline: <a href="tel:+94112345678" class="font-mono text-white font-bold hover:text-amber-400">+94 11 234 5678</a></p>
+              <p>WhatsApp: <a href="https://wa.me/94771234567" target="_blank" class="font-mono text-emerald-300 font-bold hover:underline">+94 77 123 4567</a></p>
+              <p>Email: <span class="font-mono text-stone-300">trips@ceylonodyssey.lk</span></p>
+            </div>
+          </div>
+          <button onclick="switchContactTab('traveler')" class="mt-6 w-full py-2 bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg">
+            Traveler Booking Form
+          </button>
+        </div>
+
+        <!-- For Call Taxi Owners -->
+        <div class="p-6 rounded-2xl bg-stone-800/80 border border-stone-700/80 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-400 block mb-1">For Call Taxi & Chauffeur Owners</span>
+            <h3 class="text-lg font-bold text-white font-display mb-2">Join Our Island Tour Fleet</h3>
+            <p class="text-xs text-stone-300 mb-4 leading-relaxed">Partner with us to receive regular weekly airport transfers and multi-day island tour assignments with guaranteed prompt settlement.</p>
+            <div class="space-y-2 text-xs text-stone-300">
+              <p>Fleet Hotline: <a href="tel:+94718882345" class="font-mono text-white font-bold hover:text-amber-400">+94 71 888 2345</a></p>
+              <p>Dispatch WhatsApp: <a href="https://wa.me/94718882346" target="_blank" class="font-mono text-emerald-300 font-bold hover:underline">+94 71 888 2346</a></p>
+              <p>Email: <span class="font-mono text-stone-300">fleet@ceylonodyssey.lk</span></p>
+            </div>
+          </div>
+          <button onclick="switchContactTab('taxi')" class="mt-6 w-full py-2 bg-amber-600 hover:bg-amber-500 text-stone-950 font-bold text-xs rounded-lg">
+            Driver Registration Form
+          </button>
+        </div>
+
+        <!-- For Hotel Managers -->
+        <div class="p-6 rounded-2xl bg-stone-800/80 border border-stone-700/80 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-wider text-sky-400 block mb-1">For Hotel & Villa Managers</span>
+            <h3 class="text-lg font-bold text-white font-display mb-2">List Property & Direct Placements</h3>
+            <p class="text-xs text-stone-300 mb-4 leading-relaxed">Connect your boutique hotel, eco-homestay, or 5-star resort with incoming international travelers without exorbitant OTA platform cuts.</p>
+            <div class="space-y-2 text-xs text-stone-300">
+              <p>Hotel Desk: <a href="tel:+94815557890" class="font-mono text-white font-bold hover:text-amber-400">+94 81 555 7890</a></p>
+              <p>WhatsApp: <a href="https://wa.me/94815557891" target="_blank" class="font-mono text-emerald-300 font-bold hover:underline">+94 81 555 7891</a></p>
+              <p>Email: <span class="font-mono text-stone-300">hotels@ceylonodyssey.lk</span></p>
+            </div>
+          </div>
+          <button onclick="switchContactTab('hotel')" class="mt-6 w-full py-2 bg-sky-700 hover:bg-sky-600 text-white text-xs font-semibold rounded-lg">
+            Hotel Onboarding Form
+          </button>
+        </div>
+      </div>
+
+      <!-- Functional Registration / Inquiry Form -->
+      <div id="contact-form-container" class="bg-stone-800 rounded-2xl border border-stone-700 p-6 sm:p-10 shadow-2xl">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-stone-700 mb-8">
+          <div>
+            <h3 class="text-xl font-bold font-display text-white">Online Coordination & Registration Portal</h3>
+            <p class="text-xs text-stone-400 mt-0.5">Select your role to send an instant inquiry to our Colombo travel desk.</p>
+          </div>
+          <div class="flex items-center gap-1 bg-stone-900 p-1 rounded-xl border border-stone-700">
+            <button onclick="switchContactTab('traveler')" id="tab-btn-traveler" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-800 text-white shadow-xs">I Am a Traveller</button>
+            <button onclick="switchContactTab('taxi')" id="tab-btn-taxi" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-stone-400 hover:text-white">Call Taxi Owner</button>
+            <button onclick="switchContactTab('hotel')" id="tab-btn-hotel" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-stone-400 hover:text-white">Hotel Manager</button>
+          </div>
+        </div>
+
+        <form id="partner-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 text-xs">
+            <div>
+              <label class="block font-semibold text-stone-300 mb-1.5" id="form-name-label">Full Name *</label>
+              <input type="text" required id="form-name" placeholder="e.g., Sarah Jenkins" class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-emerald-600">
+            </div>
+            <div>
+              <label class="block font-semibold text-stone-300 mb-1.5">Contact Phone / WhatsApp *</label>
+              <input type="tel" required id="form-phone" placeholder="e.g., +94 77 000 0000 or +44 7000..." class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-emerald-600">
+            </div>
+            <div>
+              <label class="block font-semibold text-stone-300 mb-1.5">Email Address *</label>
+              <input type="email" required id="form-email" placeholder="name@domain.com" class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-emerald-600">
+            </div>
+            <div>
+              <label class="block font-semibold text-stone-300 mb-1.5" id="form-district-label">Primary District of Interest *</label>
+              <select id="form-district" class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white">
+                <option value="All Island Loop">All Island Highlight Loop</option>
+                <option value="Matale (Sigiriya & Dambulla)">Matale (Sigiriya & Dambulla)</option>
+                <option value="Kandy">Kandy</option>
+                <option value="Badulla & Ella">Badulla & Ella</option>
+                <option value="Galle">Galle</option>
+                <option value="Nuwara Eliya">Nuwara Eliya</option>
+                <option value="Matara & Mirissa">Matara & Mirissa</option>
+                <option value="Hambantota & Yala">Hambantota & Yala</option>
+                <option value="Trincomalee">Trincomalee</option>
+                <option value="Jaffna">Jaffna</option>
+                <option value="Anuradhapura">Anuradhapura</option>
+                <option value="Colombo">Colombo</option>
+              </select>
+            </div>
+            <div id="dynamic-field-1">
+              <label class="block font-semibold text-stone-300 mb-1.5">Preferred Budget Tier</label>
+              <select id="form-tier" class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white">
+                <option value="Small / Budget">Small / Budget ($15–$35/night)</option>
+                <option value="Medium / Comfort" selected>Medium / Comfort ($45–$95/night)</option>
+                <option value="High / Luxury">High / Luxury ($130–$450+/night)</option>
+              </select>
+            </div>
+            <div id="dynamic-field-2">
+              <label class="block font-semibold text-stone-300 mb-1.5">Number of Travelers</label>
+              <input type="number" min="1" max="20" value="2" id="form-guests" class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white">
+            </div>
+          </div>
+
+          <div class="text-xs">
+            <label class="block font-semibold text-stone-300 mb-1.5" id="form-notes-label">Trip Dates, Preferred Places & Special Requests</label>
+            <textarea rows="3" id="form-notes" placeholder="e.g., We are visiting for 10 days in April, wanting to take the blue train and visit Sigiriya..." class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white placeholder:text-stone-500"></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+            <span class="text-xs text-stone-400">📍 Headquarters: Colombo 03 & Regional Coordination Desk in Kandy</span>
+            <button type="submit" id="form-submit-btn" class="px-8 py-3 text-xs sm:text-sm font-bold rounded-lg shadow-lg bg-emerald-700 hover:bg-emerald-600 text-white transition-all">
+              Submit Traveler Inquiry
+            </button>
+          </div>
+        </form>
+
+        <div id="form-success-msg" class="hidden text-center py-10">
+          <div class="text-4xl mb-3">✅</div>
+          <h4 class="text-xl font-bold font-display text-white mb-2">Inquiry Received Successfully!</h4>
+          <p class="text-stone-300 text-xs sm:text-sm mb-4">Our Sri Lanka team will contact you via Phone/WhatsApp within 30 minutes.</p>
+          <button onclick="resetContactForm()" class="px-4 py-2 bg-stone-700 hover:bg-stone-600 text-white text-xs font-semibold rounded-lg">Submit Another Request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stone-950 text-stone-400 text-xs border-t border-stone-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>
+        <p class="text-white font-bold text-sm mb-1">Ceylon Odyssey Travel Agency Ltd.</p>
+        <p class="text-[11px] text-stone-500">Registered Agency: TS/TA/2014/1982 · Galle Face, Colombo 03, Sri Lanka</p>
+      </div>
+      <div class="text-[11px] text-stone-400">
+        <span>Tourist Police Hotline: <strong class="text-amber-400 font-mono">1912</strong></span> · 
+        <span>Ambulance: <strong class="text-amber-400 font-mono">1990</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- POPUP MSG MODAL FOR DISTRICT DETAILS (AS REQUESTED) -->
+  <div id="district-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-stone-950/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true">
+    <div class="relative bg-white text-stone-900 rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-stone-200">
+      <button onclick="closeDistrictModal()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-stone-900/70 hover:bg-stone-950 text-white flex items-center justify-center font-bold text-lg">
+        ✕
+      </button>
+
+      <div class="relative h-64 sm:h-80 w-full overflow-hidden rounded-t-2xl bg-stone-900">
+        <img id="modal-img" src="" alt="District" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent"></div>
+        <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 right-6 text-white">
+          <div class="text-xs font-semibold uppercase tracking-wider text-amber-300 mb-1" id="modal-region-province"></div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight font-display" id="modal-title"></h2>
+          <p class="text-sm text-stone-200 mt-1 max-w-2xl font-light" id="modal-tagline"></p>
+        </div>
+      </div>
+
+      <div class="p-5 sm:p-8 space-y-6">
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-800 mb-1.5">District Overview & Character</h3>
+          <p class="text-stone-700 text-sm sm:text-base leading-relaxed" id="modal-intro"></p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 bg-stone-50 rounded-xl border border-stone-200 text-xs sm:text-sm">
+          <div><strong class="block text-stone-900">Best Season:</strong><span class="text-stone-600" id="modal-season"></span></div>
+          <div><strong class="block text-stone-900">Recommended Stay:</strong><span class="text-stone-600" id="modal-days"></span></div>
+          <div><strong class="block text-stone-900">Weather & Climate:</strong><span class="text-stone-600" id="modal-weather"></span></div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold text-stone-900 font-display mb-1">Most Precious & Unique Places</h3>
+          <p class="text-xs text-stone-500 mb-3">Key highlights and heritage monuments you must explore.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="modal-places-grid"></div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-100 text-xs sm:text-sm text-emerald-950">
+          <h4 class="font-bold mb-1">🚗 Travel Guidance & Transport Facilities:</h4>
+          <p class="text-emerald-900" id="modal-transit"></p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-950">
+          <h4 class="font-bold mb-1">🍲 Must-Try Authentic Culinary Delicacies:</h4>
+          <p class="text-amber-900" id="modal-food"></p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 mb-2">Stay Budget Tiers (Average per night)</h4>
+          <div class="grid grid-cols-3 gap-3 text-xs" id="modal-budget-grid"></div>
+        </div>
+
+        <div class="pt-4 border-t border-stone-200 flex items-center justify-end gap-3">
+          <button onclick="closeDistrictModal()" class="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-medium rounded-lg">Close</button>
+          <button onclick="planForCurrentModalDistrict()" class="px-5 py-2 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold rounded-lg">Plan Trip to This District</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT FOR COMPLETE FUNCTIONALITY -->
+  <script>
+    // 1. DATASETS
+    const DISTRICTS = [
+      {
+        id: 'matale',
+        name: 'Matale (Sigiriya & Dambulla)',
+        sinhala: 'මාතලේ',
+        tamil: 'மாத்தளை',
+        province: 'Central Province',
+        region: 'Cultural Triangle',
+        tagline: 'Citadel of the 5th-century Lion Rock & Golden Cave Temples',
+        intro: 'Home to Sri Lanka\'s most iconic UNESCO World Heritage wonder—the towering rock citadel of Sigiriya—alongside the subterranean marvel of Dambulla Cave Temple and fragrant spice gardens nestled at the foot of the Knuckles mountain range.',
+        image: 'https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80',
+        bestSeason: 'December to April, July to September',
+        weather: 'Warm tropical dry zone with breezy evenings (26°C - 33°C)',
+        days: 2,
+        transit: 'Highway from Colombo via Kurunegala (3.5 hrs), or scenic bus/cab from Kandy (2 hrs). Best explored locally by private tuk-tuk or AC van.',
+        food: 'Clay-pot red rice curry, Kurakkan Rotti with spicy Katta Sambol, and fresh King Coconut water.',
+        budgetUSD: { small: 18, medium: 55, high: 180 },
+        places: [
+          { name: 'Sigiriya Lion Rock Fortress', category: 'Heritage', desc: 'Ancient 5th-century volcanic citadel with water gardens and cloud maiden frescoes.', tag: 'UNESCO World Heritage #1 Wonder' },
+          { name: 'Pidurangala Rock', category: 'Adventure', desc: 'Sunrise hiking peak directly facing Sigiriya with 360-degree views.', tag: 'Best Sunrise Photo Spot' },
+          { name: 'Dambulla Golden Cave Temple', category: 'Heritage', desc: 'Five sacred caverns housing 150+ gilded Buddha statues and 2,000-year-old murals.', tag: 'Ancient Cave Art Sanctuary' },
+          { name: 'Riverston & Knuckles Range', category: 'Nature', desc: 'Mini World\'s End precipice, wind-swept cloud forest, and cascading waterfalls.', tag: 'Hiking & Cloud Forest Mist' }
+        ]
+      },
+      {
+        id: 'kandy',
+        name: 'Kandy (The Sacred Hill Capital)',
+        sinhala: 'මහනුවර',
+        tamil: 'கண்டி',
+        province: 'Central Province',
+        region: 'Central Highlands',
+        tagline: 'Sanctuary of the Sacred Tooth Relic & Royal Lakeside Heritage',
+        intro: 'The last royal kingdom of independent Sri Lanka, cradled amid mist-wrapped highlands and centered on the sacred waters of Kandy Lake. Famous for traditional Kandyan drumming and pageantry.',
+        image: 'https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80',
+        bestSeason: 'December to April (August hosts the grand Esala Perahera pageant)',
+        weather: 'Mild temperate highland climate (20°C - 28°C)',
+        days: 2,
+        transit: 'Scenic train from Colombo Fort (2.5 hrs, observation cars). Expressway buses run frequently from Katunayake Airport.',
+        food: 'Traditional Kandyan jackfruit curry (Polos), crispy egg hoppers, and artisanal highland spice tea.',
+        budgetUSD: { small: 20, medium: 60, high: 210 },
+        places: [
+          { name: 'Sri Dalada Maligawa (Temple of the Tooth)', category: 'Culture', desc: 'Golden-roofed sanctum housing the sacred canine relic of Gautama Buddha.', tag: 'Spiritual Heart of Sri Lanka' },
+          { name: 'Royal Botanical Gardens, Peradeniya', category: 'Nature', desc: '147 lush acres bordered by the Mahaweli River with giant bamboo and orchids.', tag: '4,000+ Botanical Species' },
+          { name: 'Bahirawakanda Giant Buddha', category: 'Heritage', desc: '88-foot pristine white Buddha atop a ridge with panoramic city vistas.', tag: 'Panoramic Cityscape Vista' },
+          { name: 'Udawattakele Sanctuary', category: 'Wildlife', desc: 'Historic royal rainforest reserve with ancient hermit caves and monkeys.', tag: 'Urban Rainforest Walk' }
+        ]
+      },
+      {
+        id: 'badulla',
+        name: 'Badulla & Ella (The Highland Railway Valley)',
+        sinhala: 'බදුල්ල / ඇල්ල',
+        tamil: 'பதுளை / எல்லா',
+        province: 'Uva Province',
+        region: 'Central Highlands',
+        tagline: 'The Blue Train crossing the Nine Arch Viaduct & Emerald Peaks',
+        intro: 'Perched high in the southern highlands, Badulla and Ella form the epic climax of the world\'s most scenic train ride. Terraced tea hills, misty gaps, and waterfalls make this an adventure magnet.',
+        image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+        bestSeason: 'January to May (clearest skies for trekking)',
+        weather: 'Crisp mountain air, misty mornings, cool nights (15°C - 24°C)',
+        days: 3,
+        transit: 'Take the blue passenger train from Kandy or Nanu Oya. Local tuk-tuks and scooters operate throughout Ella.',
+        food: 'Hot coconut roti with lunu miris, mountain buffalo curd with kithul treacle, and Ceylon black tea.',
+        budgetUSD: { small: 16, medium: 50, high: 170 },
+        places: [
+          { name: 'Nine Arch Bridge (Demodara)', category: 'Heritage', desc: 'Granite colonial viaduct with zero steel reinforcement where the train passes.', tag: 'The "Bridge in the Sky"' },
+          { name: 'Little Adam\'s Peak & Ella Rock', category: 'Adventure', desc: 'Sunrise trail through tea estates overlooking the dramatic 1,000m Ella Gap drop.', tag: 'World-Class Trekking Peaks' },
+          { name: 'Ravana Falls & Secret Caves', category: 'Nature', desc: '25m rushing cascade linked to Ramayana folklore where Sita was hidden.', tag: 'Iconic Roadside Waterfall' },
+          { name: 'Dunhinda Falls (Badulla)', category: 'Nature', desc: 'The Smoky Cascade plunging 64m into a roaring forest cauldron.', tag: 'Lanka\'s Most Dramatic Fall' }
+        ]
+      },
+      {
+        id: 'galle',
+        name: 'Galle (Colonial Ramparts & Turquoise Surf)',
+        sinhala: 'ගාල්ල',
+        tamil: 'காலி',
+        province: 'Southern Province',
+        region: 'Southern Coast',
+        tagline: '17th-Century Dutch Fort, Stilt Fishermen & Golden Coastline',
+        intro: 'Where timeless Dutch colonial cobbled alleyways meet the turquoise Indian Ocean. Galle Fort is a living UNESCO fortress packed with art galleries, boutique jewels, and nearby calm surf beaches.',
+        image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80',
+        bestSeason: 'November to April (calm sunny sea, ideal swimming)',
+        weather: 'Warm tropical maritime climate with ocean breezes (27°C - 31°C)',
+        days: 2,
+        transit: 'Fast 1.5-hr Southern Expressway drive from Colombo or scenic coastal train hugging the shoreline.',
+        food: 'Galle prawn & crab curry, fresh seer fish steak, and artisan gelato inside the fort ramparts.',
+        budgetUSD: { small: 22, medium: 75, high: 240 },
+        places: [
+          { name: 'Galle Dutch Fort Ramparts & Lighthouse', category: 'Heritage', desc: 'Coral and granite sea walls built in the 1600s with boutique cafes and museum alleys.', tag: 'UNESCO Living Fortress' },
+          { name: 'Unawatuna & Jungle Beach', category: 'Beach', desc: 'Golden bay with coral reefs, tranquil turquoise waves, and tropical rainforest paths.', tag: 'Protected Coral Swimming Bay' },
+          { name: 'Koggala Stilt Fishermen', category: 'Culture', desc: 'Ancient artisanal fishing where men balance on crossbars casting lines in the surf.', tag: 'Timeless Coastal Tradition' },
+          { name: 'Kosgoda Turtle Sanctuary', category: 'Wildlife', desc: 'Rescuing and releasing endangered Green and Hawksbill sea turtles.', tag: 'Marine Wildlife Protection' }
+        ]
+      },
+      {
+        id: 'nuwara-eliya',
+        name: 'Nuwara Eliya (Little England & Ceylon Tea)',
+        sinhala: 'නුවරඑළිය',
+        tamil: 'நுவரெலியா',
+        province: 'Central Province',
+        region: 'Central Highlands',
+        tagline: 'Misty Tea Country, Colonial Cottages & World\'s End Precipice',
+        intro: 'Sri Lanka\'s highest town at 1,868m elevation. Known for cool eucalyptus air, British Tudor mansions, Ceylon tea estates, and the 880m sheer drop of World\'s End in Horton Plains.',
+        image: 'https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80',
+        bestSeason: 'February to May (cool, dry, blossoming flowers)',
+        weather: 'Cool alpine highland climate (9°C night, 18°C day)',
+        days: 2,
+        transit: 'Train to Nanu Oya Station, followed by a 20-min taxi up to Nuwara Eliya town.',
+        food: 'Highland strawberry sundaes, British high tea at the Grand Hotel, and hot leek soup.',
+        budgetUSD: { small: 18, medium: 65, high: 220 },
+        places: [
+          { name: 'Horton Plains & World\'s End', category: 'Nature', desc: 'Cloud forest plateau with a vertical 880m drop into southern tea valleys.', tag: 'Spectacular 880m Abyss' },
+          { name: 'Pedro Tea Factory', category: 'Culture', desc: 'Operational tea processing estate where pure Ceylon pekoe is harvested.', tag: 'Birthplace of Pure Ceylon Tea' },
+          { name: 'Lake Gregory & Victoria Park', category: 'Nature', desc: 'Highland lake with pedal boats, horseback trails, and Himalayan migratory birds.', tag: 'Colonial Hillside Retreat' },
+          { name: 'Ramboda Falls', category: 'Nature', desc: 'Thundering twin falls cascading through rocky gorges on the highway.', tag: 'Thundering Mountain Waterfalls' }
+        ]
+      },
+      {
+        id: 'matara',
+        name: 'Matara & Mirissa (Whale Haven & Coconut Hill)',
+        sinhala: 'මාතර / මිරිස්ස',
+        tamil: 'மாத்தறை',
+        province: 'Southern Province',
+        region: 'Southern Coast',
+        tagline: 'Blue Whale Safaris, Surfing Breaks & Dondra Southernmost Point',
+        intro: 'The heart of Sri Lanka\'s deep south, celebrated for the highest chance to encounter Blue Whales and spinner dolphins in the wild, plus the palm-lined Coconut Tree Hill.',
+        image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80',
+        bestSeason: 'November to April (whale watching season & calm surf)',
+        weather: 'Sunny tropical beach climate (28°C - 32°C)',
+        days: 2,
+        transit: 'Southern Expressway connects Matara in 2 hours from Colombo.',
+        food: 'Southern Ambul Thiyal (sour clay-pot tuna), grilled calamari, and buffalo curd.',
+        budgetUSD: { small: 16, medium: 52, high: 195 },
+        places: [
+          { name: 'Mirissa Blue Whale Safari', category: 'Wildlife', desc: 'Encounters with the world\'s largest mammal and pods of spinner dolphins.', tag: 'World Premier Whale Watching' },
+          { name: 'Coconut Tree Hill', category: 'Nature', desc: 'Red-dirt promontory jutting into the sea crowned with towering palms.', tag: 'Iconic Sunset Photography' },
+          { name: 'Dondra Head Lighthouse', category: 'Heritage', desc: 'Tallest lighthouse in Sri Lanka and the southernmost tip of the island.', tag: 'Southernmost Tip of Lanka' },
+          { name: 'Polhena Beach Reef', category: 'Beach', desc: 'Shallow calm coral pool where green sea turtles swim with snorkelers.', tag: 'Snorkel with Wild Turtles' }
+        ]
+      },
+      {
+        id: 'hambantota',
+        name: 'Hambantota & Yala (Leopard Safari & Lagoons)',
+        sinhala: 'හම්බන්තොට / යාල',
+        tamil: 'அம்பாந்தோட்டை',
+        province: 'Southern Province',
+        region: 'Southern Coast',
+        tagline: 'World’s Highest Leopard Density & Wild Coastal Wilderness',
+        intro: 'Dry thorn scrub meets the ocean surf. Renowned globally for Yala National Park—home to the highest concentration of leopards on earth—plus elephant herds and flamingo lagoons.',
+        image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80',
+        bestSeason: 'February to July (dry season when animals gather at waterholes)',
+        weather: 'Sunny dry zone with open blue skies (29°C - 34°C)',
+        days: 2,
+        transit: 'Southern Expressway directly links Colombo in 2.5 hrs. Open 4x4 safari jeeps required inside parks.',
+        food: 'Hambantota curd, fiery wild jackfruit curry, and rustic village pol roti.',
+        budgetUSD: { small: 20, medium: 70, high: 260 },
+        places: [
+          { name: 'Yala National Park', category: 'Wildlife', desc: 'World-famous coastal safari park harboring wild leopards, elephants, and bears.', tag: 'Highest Leopard Density on Earth' },
+          { name: 'Bundala Wetland Reserve', category: 'Wildlife', desc: 'Ramsar wetland sanctuary hosting thousands of Greater Flamingos.', tag: 'Ramsar Wetland Bird Sanctuary' },
+          { name: 'Kirinda Sea Temple & Dunes', category: 'Heritage', desc: 'Seaside rock temple overlooking wild dunes and crashing ocean waves.', tag: 'Ancient Seaside Legend' },
+          { name: 'Ridiyagama Safari Park', category: 'Wildlife', desc: '500-acre open-range safari zoo with free-roaming lions and herbivores.', tag: 'Open-Range Safari Adventure' }
+        ]
+      },
+      {
+        id: 'trincomalee',
+        name: 'Trincomalee (Clifftop Shrine & Nilaveli Sands)',
+        sinhala: 'ත්‍රිකුණාමලය',
+        tamil: 'திருகோணமலை',
+        province: 'Eastern Province',
+        region: 'Eastern Paradise',
+        tagline: 'Clifftop Koneswaram Temple, Pigeon Island Reef & Whale Sanctuary',
+        intro: 'A legendary deep-water harbor on the east coast. Famous for the sacred clifftop Hindu shrine Koneswaram, powdery white beaches in Nilaveli, and snorkeling with reef sharks at Pigeon Island.',
+        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+        bestSeason: 'April to October (calm turquoise seas, ideal diving)',
+        weather: 'Eastern coast sunshine and gentle sea breezes (28°C - 33°C)',
+        days: 3,
+        transit: 'Express train from Colombo Fort (7 hrs), or private AC car via Dambulla (5 hrs).',
+        food: 'Trincomalee spiced crab curry, seafood kothu roti, and hot Jaffna dosas.',
+        budgetUSD: { small: 18, medium: 58, high: 190 },
+        places: [
+          { name: 'Koneswaram Temple & Swami Rock', category: 'Culture', desc: 'Millennium-old clifftop Shiva temple dropping 130m into azure sea.', tag: 'The "Rome of the Orient"' },
+          { name: 'Pigeon Island Marine Park', category: 'Wildlife', desc: 'Live coral reefs where you snorkel alongside harmless reef sharks and turtles.', tag: 'Premier Coral Snorkeling' },
+          { name: 'Nilaveli & Marble Beach', category: 'Beach', desc: 'Powdery white sands and tranquil crystal-clear turquoise waters.', tag: 'Pristine White Sand Coast' },
+          { name: 'Kanniya Hot Springs', category: 'Heritage', desc: 'Seven square stone wells with naturally warm healing thermal waters.', tag: 'Natural Thermal Wells' }
+        ]
+      },
+      {
+        id: 'jaffna',
+        name: 'Jaffna (Northern Heritage & Delft Island)',
+        sinhala: 'යාපනය',
+        tamil: 'யாழ்ப்பாணம்',
+        province: 'Northern Province',
+        region: 'Northern Heritage',
+        tagline: 'Golden Nallur Kovil, Coastal Fort & Wild Island Ponies',
+        intro: 'The vibrant cultural heart of Tamil heritage in Sri Lanka, boasting towering golden temple gopurams, coastal forts, Palmyra palm horizons, and wild Portuguese ponies on Delft Island.',
+        image: 'https://images.unsplash.com/photo-1609137144822-38686d115be5?auto=format&fit=crop&w=800&q=80',
+        bestSeason: 'December to March (pleasant sunshine, dry weather)',
+        weather: 'Warm northern maritime sunshine (27°C - 32°C)',
+        days: 3,
+        transit: 'Take the Yal Devi express train from Colombo Fort (6 hrs) across Elephant Pass.',
+        food: 'Fiery Jaffna crab curry, Odiyal Kool seafood soup, Jaffna mangoes, and Rio ice cream.',
+        budgetUSD: { small: 18, medium: 50, high: 155 },
+        places: [
+          { name: 'Nallur Kandaswamy Kovil', category: 'Culture', desc: 'Towering golden temple gopurams and sacred silver chariot festivals.', tag: 'Grandest Northern Hindu Shrine' },
+          { name: 'Delft Island (Neduntheevu)', category: 'Adventure', desc: 'Coral-stone island with wild feral ponies left by Dutch colonists.', tag: 'Feral Ponies & Coral Island' },
+          { name: 'Jaffna Dutch Fort', category: 'Heritage', desc: 'Massive 1618 coastal fortification overlooking the calm lagoon.', tag: 'Colonial Limestone Bastion' },
+          { name: 'Keerimalai Sacred Springs', category: 'Heritage', desc: 'Freshwater seaside mineral pool renowned for healing properties.', tag: 'Natural Healing Seashore Pool' }
+        ]
+      },
+      {
+        id: 'colombo',
+        name: 'Colombo (Vibrant Coastal Metropolis)',
+        sinhala: 'කොළඹ',
+        tamil: 'கொழும்பு',
+        province: 'Western Province',
+        region: 'Western Hub',
+        tagline: 'Lakeside Gangaramaya, Sunset Promenades & High-Rise Dining',
+        intro: 'The dynamic commercial capital blending colonial clock towers and Geoffrey Bawa architecture with futuristic skyscrapers like the 350m Colombo Lotus Tower.',
+        image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&q=80',
+        bestSeason: 'November to April, buzzing year-round',
+        weather: 'Tropical ocean climate with warm days and breezy evenings (26°C - 32°C)',
+        days: 2,
+        transit: '30-minute expressway from airport (CMB). Ride-hailing via PickMe & Uber or metered tuk-tuks.',
+        food: 'Ministry of Crab chili mud crab, Galle Face prawn fritters (Isso Vadai), and street kottu.',
+        budgetUSD: { small: 20, medium: 70, high: 230 },
+        places: [
+          { name: 'Gangaramaya & Seema Malaka', category: 'Culture', desc: 'Floating pavilion on Beira Lake designed by Geoffrey Bawa.', tag: 'Floating Lake Pavilion' },
+          { name: 'Galle Face Green Promenade', category: 'Culture', desc: 'Oceanfront lawn bustling with sunset watchers and street food carts.', tag: 'Sunset Gathering & Street Food' },
+          { name: 'Colombo Lotus Tower', category: 'Adventure', desc: 'South Asia\'s tallest self-supported tower with a 350m observation deck.', tag: '350m Modern Skyline Wonder' },
+          { name: 'Dutch Hospital Precinct & Pettah', category: 'Heritage', desc: '17th-century colonial dining courtyard alongside colorful street bazaars.', tag: 'Colonial Courtyard & Bazaars' }
+        ]
+      }
+    ];
+
+    const TRANSPORTS = [
+      { name: 'The Scenic Hill Country & Coastal Train', category: 'Train', tagline: 'World-famous tea mountain rail & ocean-hugging railway', desc: 'Famous routes: Colombo to Kandy, Kandy to Ella (over Nine Arch Bridge), and coastal line to Galle.', rateUSD: '$8 - $22 / ticket', rateLKR: 'Rs. 2,400 - 6,800', note: 'Tickets open 30 days prior. We pre-reserve official seats.', img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80' },
+      { name: 'Dedicated Private AC Car / Van & Chauffeur', category: 'Private Chauffeur', tagline: 'Door-to-door flexibility with certified English-speaking drivers', desc: 'Toyota Prius or luxury Toyota KDH high-roof van. Unlimited fuel, expressway tolls, and driver lodging included.', rateUSD: '$60 - $95 / full day', rateLKR: 'Rs. 18,500 - 29,500', note: 'SLTDA certified guide. Driver expenses fully covered.', img: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80' },
+      { name: 'Airport Transfer & Intercity Call Taxi', category: 'Call Taxi', tagline: 'Fixed-price point-to-point transfers and on-demand cabs', desc: 'Direct airport pickup to Colombo, Negombo, Galle, Kandy, or Sigiriya with flight delay tracking.', rateUSD: '$35 - $65 / route', rateLKR: 'Rs. 10,800 - 20,000', note: '120+ verified call taxi owners islandwide.', img: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80' },
+      { name: 'Local Tuk-Tuk & Self-Drive Rental', category: 'Tuk-Tuk', tagline: 'The quintessential Ceylon thrill for village alleys & beaches', desc: 'We offer chauffeured tuk-tuk hops and self-drive rentals with local international driving permits.', rateUSD: '$2 - $5 / hop | $18 / day rental', rateLKR: 'Rs. 600 - 1,500', note: 'Pre-negotiated transparent agency pricing.', img: 'https://images.unsplash.com/photo-1579202673506-ca3ce28943ef?auto=format&fit=crop&w=600&q=80' },
+      { name: 'Intercity Expressway Luxury AC Bus', category: 'Expressway Bus', tagline: 'Fast and pocket-friendly journeys along smooth expressways', desc: 'Nonstop AC coaches connecting Colombo with Galle, Matara, Hambantota, and Kandy via tollways.', rateUSD: '$3 - $6 / trip', rateLKR: 'Rs. 950 - 1,850', note: 'Departures every 20-30 mins from key terminals.', img: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80' }
+    ];
+
+    const STAYS = [
+      { id: '1', name: 'Sigiriya Treehouse Eco Lodge', district: 'Matale', tier: 'Small / Budget', tierCat: 'small', priceUSD: 24, img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80', desc: 'Rustic wooden treehouse nestled in teak forest overlooking Pidurangala. Authentic homemade curry.', rating: 4.8 },
+      { id: '2', name: 'Ella Valley View Homestay', district: 'Badulla & Ella', tier: 'Small / Budget', tierCat: 'small', priceUSD: 28, img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80', desc: 'Perched on the rim of Ella Gap with mountain views and fresh fruit breakfasts.', rating: 4.9 },
+      { id: '3', name: 'Mirissa Palm Surf Bungalows', district: 'Matara & Mirissa', tier: 'Small / Budget', tierCat: 'small', priceUSD: 30, img: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80', desc: '150m from Mirissa surf reef. Hammock garden and whale watching reservation desk.', rating: 4.7 },
+      { id: '4', name: 'Fort Printers Heritage Boutique', district: 'Galle', tier: 'Medium / Comfort', tierCat: 'medium', priceUSD: 78, img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80', desc: 'Restored 18th-century Dutch colonial mansion inside Galle Fort with lap pool and seafood bistro.', rating: 4.9 },
+      { id: '5', name: 'Earl’s Regency River Lodge', district: 'Kandy', tier: 'Medium / Comfort', tierCat: 'medium', priceUSD: 85, img: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=600&q=80', desc: 'Mahaweli riverside resort with infinity pool, ayurvedic spa, and mountain views.', rating: 4.8 },
+      { id: '6', name: 'Crest Highland Manor & Tea Lodge', district: 'Nuwara Eliya', tier: 'Medium / Comfort', tierCat: 'medium', priceUSD: 70, img: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&q=80', desc: 'British hill-station architecture with wood fireplaces and tea peak panoramas.', rating: 4.8 },
+      { id: '7', name: 'Water Garden Sigiriya Villas', district: 'Matale', tier: 'High / Luxury', tierCat: 'high', priceUSD: 240, img: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80', desc: 'Exclusive private plunge pool villas inspired by royal water gardens facing Lion Rock.', rating: 5.0 },
+      { id: '8', name: 'Ceylon Tea Trails - Castlereagh', district: 'Nuwara Eliya', tier: 'High / Luxury', tierCat: 'high', priceUSD: 380, img: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80', desc: 'Relais & Châteaux restored British planter bungalow with personal butler and tea sommelier.', rating: 5.0 },
+      { id: '9', name: 'Wild Coast Tented Lodge - Yala', district: 'Hambantota & Yala', tier: 'High / Luxury', tierCat: 'high', priceUSD: 420, img: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=600&q=80', desc: 'Luxury cocoon domes where the jungle meets the sea. Private leopard tracking safari naturalist.', rating: 4.9 },
+      { id: '10', name: 'Amangalla Colonial Heritage', district: 'Galle', tier: 'High / Luxury', tierCat: 'high', priceUSD: 360, img: 'https://images.unsplash.com/photo-1563911302283-d2bc129e7570?auto=format&fit=crop&w=600&q=80', desc: 'Grand 17th-century landmark in Galle Fort with antique four-poster beds and hydrotherapy baths.', rating: 4.9 }
+    ];
+
+    const REVIEWS = [
+      { name: 'Elena & Marcus Vance', country: 'United Kingdom', rating: 5, route: 'Sigiriya → Kandy → Ella → Galle', title: 'Flawless 10-day loop around Sri Lanka!', comment: 'Our driver was an absolute gem—always on time, knowledgeable about every hidden temple, and drove safely. Clicking the district pictures helped us plan each stop. We did the scenic train and loved the mix of boutique stays in Galle Fort and treehouses in Sigiriya.' },
+      { name: 'Dr. Sophie Meyer', country: 'Germany', rating: 5, route: 'Colombo → Anuradhapura → Trincomalee → Jaffna', title: 'Incredible budget-friendly advice for solo travel', comment: 'As a solo woman traveling across northern and eastern districts, I felt completely safe. The budget accommodation recommendations were clean and welcoming, and train ticket reservations from Colombo saved me hours.' },
+      { name: 'The Gallagher Family (David & Sarah)', country: 'Australia', rating: 5, route: 'Yala Safari → Mirissa Whales → Ella', title: 'Saw 3 leopards in Yala and blue whales in Mirissa!', comment: 'Traveling with two teenagers was seamless. Ceylon Odyssey organized a spacious Toyota KDH van with AC, excellent kid-friendly hotels with pools, and VIP safari jeeps. The cost calculator was spot on!' },
+      { name: 'Rajiv & Ananya Sharma', country: 'India', rating: 5, route: 'Kandy → Nuwara Eliya → Galle', title: 'Exceptional luxury recommendations', comment: 'The high-tier curation was impeccable—Amangalla in Galle and Ceylon Tea Trails were pure paradise. The agency coordinator was available round-the-clock on WhatsApp.' }
+    ];
+
+    const FAQS = [
+      { q: 'Do I need a visa to travel to Sri Lanka and how do I apply?', a: 'Most international travelers require an Electronic Travel Authorization (ETA) or tourist eVisa prior to boarding their flight. You can apply easily online. Our team assists with fast-track documentation.' },
+      { q: 'When is the best time to visit Sri Lanka given the two monsoons?', a: 'Sri Lanka is a year-round sunshine island! From Nov to April, the South/West coasts (Galle, Mirissa, Colombo) and Highlands (Ella, Kandy) are sunny. From May to September, the East coast (Trincomalee) and Cultural Triangle (Sigiriya) enjoy calm blue waters and dry weather.' },
+      { q: 'How do we book the famous Kandy to Ella blue train tickets?', a: 'Tickets open 30 days before the travel date and sell out in minutes during peak season. Our transport desk pre-reserves 1st/2nd class seats for clients in advance and delivers tickets to your hotel.' },
+      { q: 'How much should I budget per day across Small, Medium, and High tiers?', a: 'Small (Budget): $35–$50/person covers eco-homestays, curries, and public trains. Medium (Comfort): $75–$130/person covers boutique hotels with pools and private chauffeur segments. High (Luxury): $220–$450+/person covers 5-star villas, dedicated luxury AC vans, and fine dining.' },
+      { q: 'How do Call Taxi owners and Hotel managers partner with Ceylon Odyssey?', a: 'Chauffeurs and taxi owners with clean tourist vehicles can register via our Partner section for weekly pre-paid tour assignments. Hotel managers can list properties for direct guest placements without heavy OTA commissions.' },
+      { q: 'What is the dress code for visiting sacred temples like Kandy or Anuradhapura?', a: 'Shoulders and knees must be covered. White or light-colored attire is respectful. Shoes and hats must be removed at temple entrances. Never pose with your back turned to a Buddha statue for photos.' }
+    ];
+
+    // 2. CURRENCY & STATE
+    let currentCurrency = 'USD';
+    const CURRENCIES = {
+      USD: { symbol: '$', rate: 1 },
+      LKR: { symbol: 'Rs. ', rate: 310 },
+      EUR: { symbol: '€', rate: 0.92 },
+      GBP: { symbol: '£', rate: 0.79 }
+    };
+
+    function formatPrice(amountUSD) {
+      const c = CURRENCIES[currentCurrency];
+      const val = Math.round(amountUSD * c.rate);
+      return currentCurrency === 'LKR' ? c.symbol + val.toLocaleString() : c.symbol + val;
+    }
+
+    function changeCurrency(newCurr) {
+      currentCurrency = newCurr;
+      renderDistricts();
+      renderStays();
+      updateEstimator();
+    }
+
+    // 3. RENDER DISTRICTS
+    let currentRegion = 'All Regions';
+    let searchQuery = '';
+
+    function renderDistricts() {
+      const grid = document.getElementById('district-cards-grid');
+      const filtered = DISTRICTS.filter(d => {
+        const matchesRegion = currentRegion === 'All Regions' || d.region === currentRegion;
+        if (!matchesRegion) return false;
+        if (!searchQuery.trim()) return true;
+        const q = searchQuery.toLowerCase();
+        return d.name.toLowerCase().includes(q) || d.intro.toLowerCase().includes(q) || d.tagline.toLowerCase().includes(q) || d.places.some(p => p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="col-span-3 text-center py-12 bg-white rounded-xl border border-stone-200"><p class="text-stone-500 font-medium">No districts match your search. Try "Sigiriya", "Ella", or "Galle".</p></div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(d => `
+        <article class="bg-white rounded-2xl border border-stone-200 overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col group">
+          <!-- Picture with Click Event Triggering Popup Message -->
+          <div onclick="openDistrictModal('${d.id}')" class="relative h-60 w-full overflow-hidden cursor-pointer bg-stone-900" title="Click picture for district popup guide">
+            <img src="${d.image}" alt="${d.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent"></div>
+            <div class="absolute top-3 left-3 bg-stone-900/70 text-white text-[11px] font-medium px-2.5 py-1 rounded-md backdrop-blur-sm">${d.region}</div>
+            
+            <!-- POPUP PROMPT BADGE -->
+            <div class="absolute bottom-3 right-3 bg-emerald-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md flex items-center gap-1.5 group-hover:scale-105 transition-transform">
+              <span>👁️ Click photo for guide</span>
+            </div>
+
+            <div class="absolute bottom-3 left-3 text-white max-w-[65%]">
+              <h3 class="text-xl font-bold font-display leading-tight">${d.name}</h3>
+              <span class="text-xs text-amber-300">${d.sinhala} · ${d.tamil}</span>
+            </div>
+          </div>
+
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-xs text-stone-500 mb-2">
+                <span>${d.province}</span> · <span>${d.days} Days ideal</span> · <span>${d.bestSeason.split(',')[0]}</span>
+              </div>
+              <p class="text-stone-700 text-sm line-clamp-2 leading-relaxed mb-4">${d.intro}</p>
+              
+              <div class="mb-4">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-stone-400 mb-1.5">Precious Highlights:</p>
+                <ul class="space-y-1 text-xs text-stone-800">
+                  ${d.places.slice(0, 3).map(p => `
+                    <li class="flex items-baseline gap-1.5 truncate">
+                      <span class="text-emerald-700">●</span> <strong>${p.name}:</strong> <span class="text-stone-600">${p.tag}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-stone-400 block uppercase">Stays from</span>
+                <span class="text-sm font-bold text-stone-900">${formatPrice(d.budgetUSD.small)} <span class="text-xs font-normal text-stone-500">/ night</span></span>
+              </div>
+              <button onclick="openDistrictModal('${d.id}')" class="text-xs font-semibold text-emerald-800 hover:text-emerald-950 flex items-center gap-1">
+                <span>View District Popup</span> <span>↗</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function filterRegion(reg) {
+      currentRegion = reg;
+      document.querySelectorAll('.region-tab').forEach(b => {
+        if (b.dataset.region === reg) {
+          b.className = 'region-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap bg-emerald-800 text-white shadow-sm';
+        } else {
+          b.className = 'region-tab px-4 py-2 text-xs font-semibold rounded-lg whitespace-nowrap bg-white text-stone-700 hover:bg-stone-200 border border-stone-200';
+        }
+      });
+      renderDistricts();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val;
+      renderDistricts();
+    }
+
+    function setSearchFilter(val) {
+      document.getElementById('district-search-input').value = val;
+      searchQuery = val;
+      renderDistricts();
+      document.getElementById('districts').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 4. DISTRICT POPUP MODAL (User Requirement)
+    let currentModalDistrict = null;
+
+    function openDistrictModal(districtId) {
+      const d = DISTRICTS.find(x => x.id === districtId);
+      if (!d) return;
+      currentModalDistrict = d;
+
+      document.getElementById('modal-img').src = d.image;
+      document.getElementById('modal-region-province').innerText = `${d.province} · ${d.region} · ${d.sinhala} / ${d.tamil}`;
+      document.getElementById('modal-title').innerText = d.name;
+      document.getElementById('modal-tagline').innerText = d.tagline;
+      document.getElementById('modal-intro').innerText = d.intro;
+      document.getElementById('modal-season').innerText = d.bestSeason;
+      document.getElementById('modal-days').innerText = `${d.days} Days for full immersion`;
+      document.getElementById('modal-weather').innerText = d.weather;
+      document.getElementById('modal-transit').innerText = d.transit;
+      document.getElementById('modal-food').innerText = d.food;
+
+      document.getElementById('modal-places-grid').innerHTML = d.places.map(p => `
+        <div class="p-3.5 rounded-xl border border-stone-200 bg-white">
+          <div class="flex items-center justify-between mb-1">
+            <h5 class="font-bold text-stone-900 text-sm">${p.name}</h5>
+            <span class="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">${p.category}</span>
+          </div>
+          <p class="text-xs text-stone-600 mb-1.5 leading-relaxed">${p.desc}</p>
+          <p class="text-[11px] font-semibold text-amber-700">✓ ${p.tag}</p>
+        </div>
+      `).join('');
+
+      document.getElementById('modal-budget-grid').innerHTML = `
+        <div class="p-3 rounded-lg border border-stone-200 bg-white">
+          <span class="text-[10px] uppercase font-bold text-emerald-800">Small / Budget</span>
+          <p class="text-base font-bold text-stone-900">${formatPrice(d.budgetUSD.small)}/nt</p>
+          <span class="text-[10px] text-stone-500">Homestays & fan/AC rooms</span>
+        </div>
+        <div class="p-3 rounded-lg border border-emerald-300 bg-emerald-50/50">
+          <span class="text-[10px] uppercase font-bold text-emerald-800">Medium / Comfort</span>
+          <p class="text-base font-bold text-stone-900">${formatPrice(d.budgetUSD.medium)}/nt</p>
+          <span class="text-[10px] text-stone-500">Boutique hotels with pool</span>
+        </div>
+        <div class="p-3 rounded-lg border border-stone-200 bg-white">
+          <span class="text-[10px] uppercase font-bold text-amber-800">High / Luxury</span>
+          <p class="text-base font-bold text-stone-900">${formatPrice(d.budgetUSD.high)}/nt</p>
+          <span class="text-[10px] text-stone-500">5-star heritage villas & estates</span>
+        </div>
+      `;
+
+      document.getElementById('district-modal').classList.remove('hidden');
+    }
+
+    function closeDistrictModal() {
+      document.getElementById('district-modal').classList.add('hidden');
+    }
+
+    function planForCurrentModalDistrict() {
+      if (currentModalDistrict) {
+        document.getElementById('form-district').value = currentModalDistrict.name;
+        document.getElementById('form-notes').value = `I would like to explore ${currentModalDistrict.name} and nearby attractions.`;
+      }
+      closeDistrictModal();
+      document.getElementById('partner-contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 5. RENDER TRANSPORTS
+    function renderTransports() {
+      document.getElementById('transport-grid').innerHTML = TRANSPORTS.map(t => `
+        <div class="bg-stone-50 rounded-2xl border border-stone-200 overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="relative h-44 w-full bg-stone-900">
+              <img src="${t.img}" alt="${t.name}" class="w-full h-full object-cover">
+              <span class="absolute top-3 left-3 bg-stone-900/80 text-white text-[11px] font-semibold px-2 py-0.5 rounded">${t.category}</span>
+              <div class="absolute bottom-2 left-3 right-3 text-white font-bold text-base drop-shadow-md">${t.name}</div>
+            </div>
+            <div class="p-5">
+              <p class="text-xs font-medium text-emerald-800 mb-1.5">${t.tagline}</p>
+              <p class="text-xs text-stone-600 leading-relaxed mb-3">${t.desc}</p>
+              <div class="p-2.5 bg-white rounded-lg border border-stone-200 mb-3 text-xs flex justify-between">
+                <span class="text-stone-500">Estimated Rate:</span>
+                <strong class="text-stone-900 font-bold">${t.rateUSD}</strong>
+              </div>
+              <p class="text-[11px] text-amber-900 bg-amber-50 p-2 rounded border border-amber-200"><strong>Note: </strong>${t.note}</p>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <button onclick="bookTransport('${t.name}')" class="w-full py-2 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold rounded-lg">
+              Book / Inquire Transport
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function bookTransport(name) {
+      document.getElementById('form-notes').value = `I would like to inquire about booking: ${name}.`;
+      document.getElementById('partner-contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 6. RENDER STAYS
+    let currentStayTier = 'all';
+
+    function renderStays() {
+      const filtered = STAYS.filter(s => currentStayTier === 'all' || s.tierCat === currentStayTier);
+      document.getElementById('stays-grid').innerHTML = filtered.map(s => `
+        <article class="bg-white rounded-2xl border border-stone-200 overflow-hidden shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="relative h-44 w-full bg-stone-900">
+              <img src="${s.img}" alt="${s.name}" class="w-full h-full object-cover">
+              <span class="absolute top-3 left-3 text-[10px] font-bold px-2 py-0.5 rounded text-white ${s.tierCat === 'small' ? 'bg-emerald-900/90' : s.tierCat === 'medium' ? 'bg-sky-900/90' : 'bg-amber-900/90'}">${s.tier}</span>
+              <span class="absolute bottom-2 left-2 bg-stone-900/80 text-white text-[11px] font-bold px-2 py-0.5 rounded">★ ${s.rating}</span>
+            </div>
+            <div class="p-4">
+              <span class="text-[11px] text-stone-500 block mb-1">${s.district}</span>
+              <h4 class="text-sm font-bold text-stone-900 mb-1.5 font-display">${s.name}</h4>
+              <p class="text-xs text-stone-600 line-clamp-2 leading-relaxed mb-3">${s.desc}</p>
+            </div>
+          </div>
+          <div class="p-4 pt-0 border-t border-stone-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-stone-400 block uppercase">Starting</span>
+              <span class="text-sm font-bold text-stone-900">${formatPrice(s.priceUSD)} <span class="text-xs font-normal text-stone-500">/nt</span></span>
+            </div>
+            <button onclick="bookHotel('${s.name}', '${s.tier}')" class="px-3 py-1.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold rounded-lg">
+              Book
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function filterStays(tier) {
+      currentStayTier = tier;
+      document.querySelectorAll('.stay-filter-btn').forEach(b => {
+        b.className = 'stay-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md text-stone-600 hover:text-stone-900';
+      });
+      document.getElementById('stay-tab-' + tier).className = 'stay-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md bg-white text-stone-900 shadow-xs';
+      renderStays();
+    }
+
+    function bookHotel(hotel, tier) {
+      document.getElementById('form-tier').value = tier;
+      document.getElementById('form-notes').value = `I would like to reserve accommodation at "${hotel}" (${tier}).`;
+      document.getElementById('partner-contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 7. BUDGET ESTIMATOR DYNAMICS
+    let estDays = 10;
+    let estTravelers = 2;
+    let estTier = 'medium';
+    let estTransport = 'chauffeur-van';
+
+    function setEstDays(d) {
+      estDays = d;
+      document.getElementById('est-days-display').innerText = `${d} Days`;
+      document.querySelectorAll('.est-d-btn').forEach(b => {
+        b.className = b.innerText.includes(d + ' ') ? 'est-d-btn py-2 text-xs font-semibold rounded-lg border bg-emerald-800 text-white border-emerald-800 shadow-xs' : 'est-d-btn py-2 text-xs font-semibold rounded-lg border bg-white text-stone-700 border-stone-200';
+      });
+      updateEstimator();
+    }
+
+    function setEstTravelers(t) {
+      estTravelers = t;
+      const rooms = Math.ceil(t / 2);
+      document.getElementById('est-travelers-display').innerText = `${t} ${t === 1 ? 'Guest' : 'Guests'}`;
+      document.getElementById('est-rooms-display').innerText = `${rooms} Room(s) calculated`;
+      document.querySelectorAll('.est-t-btn').forEach(b => {
+        b.className = b.innerText.includes('(' + t + ')') ? 'est-t-btn py-2 text-xs font-semibold rounded-lg border bg-emerald-800 text-white border-emerald-800 shadow-xs' : 'est-t-btn py-2 text-xs font-semibold rounded-lg border bg-white text-stone-700 border-stone-200';
+      });
+      updateEstimator();
+    }
+
+    function setEstTier(tier) {
+      estTier = tier;
+      document.querySelectorAll('.est-tier-btn').forEach(b => {
+        b.className = 'est-tier-btn p-3 rounded-xl border text-left bg-white border-stone-200';
+      });
+      document.getElementById('est-tier-' + tier).className = 'est-tier-btn p-3 rounded-xl border text-left bg-white border-emerald-700 ring-2 ring-emerald-700/20 shadow-xs';
+      updateEstimator();
+    }
+
+    function setEstTransport(tr) {
+      estTransport = tr;
+      document.querySelectorAll('.est-tr-btn').forEach(b => {
+        b.className = 'est-tr-btn p-3 rounded-xl border text-left bg-white border-stone-200';
+      });
+      document.getElementById('est-tr-' + (tr === 'chauffeur-van' ? 'chauffeur' : tr === 'train-tuktuk' ? 'train' : 'hybrid')).className = 'est-tr-btn p-3 rounded-xl border text-left bg-white border-emerald-700 ring-2 ring-emerald-700/20 shadow-xs';
+      updateEstimator();
+    }
+
+    function updateEstimator() {
+      const stayRate = estTier === 'small' ? 26 : estTier === 'medium' ? 75 : 280;
+      const rooms = Math.ceil(estTravelers / 2);
+      const totalStay = rooms * stayRate * estDays;
+
+      let dailyTransport = 0;
+      if (estTransport === 'train-tuktuk') dailyTransport = 12 * estTravelers;
+      else if (estTransport === 'chauffeur-van') dailyTransport = estTravelers <= 3 ? 70 : 95;
+      else dailyTransport = 45;
+      const totalTransport = dailyTransport * estDays;
+
+      const mealPerPerson = estTier === 'small' ? 12 : estTier === 'medium' ? 28 : 65;
+      const totalMeals = mealPerPerson * estTravelers * estDays;
+
+      const actPerPerson = estTier === 'small' ? 60 : estTier === 'medium' ? 140 : 280;
+      const totalAct = actPerPerson * estTravelers;
+
+      const grandTotal = totalStay + totalTransport + totalMeals + totalAct;
+      const perPerson = grandTotal / estTravelers;
+      const perPersonDay = perPerson / estDays;
+
+      document.getElementById('est-grand-total').innerText = formatPrice(grandTotal);
+      document.getElementById('est-per-person-total').innerText = formatPrice(perPerson);
+      document.getElementById('est-per-person-day').innerText = formatPrice(perPersonDay);
+
+      document.getElementById('est-stay-breakdown').innerText = formatPrice(totalStay);
+      document.getElementById('est-tr-breakdown').innerText = formatPrice(totalTransport);
+      document.getElementById('est-meals-breakdown').innerText = formatPrice(totalMeals);
+      document.getElementById('est-act-breakdown').innerText = formatPrice(totalAct);
+
+      document.getElementById('tier-price-small').innerText = '~' + formatPrice(26) + '/night';
+      document.getElementById('tier-price-medium').innerText = '~' + formatPrice(75) + '/night';
+      document.getElementById('tier-price-high').innerText = '~' + formatPrice(280) + '/night';
+    }
+
+    // 8. RENDER REVIEWS & FAQS
+    function renderReviews() {
+      document.getElementById('reviews-grid').innerHTML = REVIEWS.map(r => `
+        <div class="p-6 bg-white rounded-2xl border border-stone-200 shadow-xs">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <h4 class="text-sm font-bold text-stone-900">${r.name}</h4>
+              <p class="text-xs text-stone-500">${r.country}</p>
+            </div>
+            <div class="text-amber-400 text-xs">★★★★★</div>
+          </div>
+          <h5 class="text-sm font-bold text-stone-900 mb-1.5">${r.title}</h5>
+          <p class="text-xs text-stone-600 leading-relaxed mb-3">"${r.comment}"</p>
+          <span class="text-[11px] text-emerald-800 font-semibold bg-emerald-50 px-2 py-0.5 rounded">📍 ${r.route}</span>
+        </div>
+      `).join('');
+    }
+
+    function renderFaqs() {
+      document.getElementById('faqs-list').innerHTML = FAQS.map((f, i) => `
+        <div class="rounded-xl border border-stone-200 overflow-hidden bg-stone-50">
+          <button onclick="toggleFaq(${i})" class="w-full py-4 px-5 text-left flex justify-between items-center font-semibold text-stone-900 text-sm hover:text-emerald-800">
+            <span>${f.q}</span>
+            <span id="faq-icon-${i}">▼</span>
+          </button>
+          <div id="faq-ans-${i}" class="${i === 1 ? '' : 'hidden'} px-5 pb-5 pt-1 text-xs text-stone-600 border-t border-stone-200/50 leading-relaxed">
+            ${f.a}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleFaq(i) {
+      const ans = document.getElementById('faq-ans-' + i);
+      ans.classList.toggle('hidden');
+    }
+
+    // 9. COORDINATION PORTAL (Travellers, Taxi Owners, Hotel Managers)
+    let currentTab = 'traveler';
+
+    function switchContactTab(tab) {
+      currentTab = tab;
+      document.getElementById('tab-btn-traveler').className = tab === 'traveler' ? 'px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-800 text-white shadow-xs' : 'px-3 py-1.5 text-xs font-semibold rounded-lg text-stone-400 hover:text-white';
+      document.getElementById('tab-btn-taxi').className = tab === 'taxi' ? 'px-3 py-1.5 text-xs font-semibold rounded-lg bg-amber-600 text-stone-950 font-bold shadow-xs' : 'px-3 py-1.5 text-xs font-semibold rounded-lg text-stone-400 hover:text-white';
+      document.getElementById('tab-btn-hotel').className = tab === 'hotel' ? 'px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-700 text-white shadow-xs' : 'px-3 py-1.5 text-xs font-semibold rounded-lg text-stone-400 hover:text-white';
+
+      const nameLabel = document.getElementById('form-name-label');
+      const distLabel = document.getElementById('form-district-label');
+      const notesLabel = document.getElementById('form-notes-label');
+      const submitBtn = document.getElementById('form-submit-btn');
+
+      if (tab === 'traveler') {
+        nameLabel.innerText = 'Full Name *';
+        distLabel.innerText = 'Primary District of Interest *';
+        notesLabel.innerText = 'Trip Dates, Preferred Places & Special Requests';
+        submitBtn.innerText = 'Submit Traveler Inquiry';
+        submitBtn.className = 'px-8 py-3 text-xs sm:text-sm font-bold rounded-lg shadow-lg bg-emerald-700 hover:bg-emerald-600 text-white';
+        document.getElementById('dynamic-field-1').innerHTML = `
+          <label class="block font-semibold text-stone-300 mb-1.5">Preferred Budget Tier</label>
+          <select id="form-tier" class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white">
+            <option value="Small / Budget">Small / Budget ($15–$35/night)</option>
+            <option value="Medium / Comfort" selected>Medium / Comfort ($45–$95/night)</option>
+            <option value="High / Luxury">High / Luxury ($130–$450+/night)</option>
+          </select>`;
+        document.getElementById('dynamic-field-2').innerHTML = `
+          <label class="block font-semibold text-stone-300 mb-1.5">Number of Travelers</label>
+          <input type="number" min="1" max="20" value="2" id="form-guests" class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white">`;
+      } else if (tab === 'taxi') {
+        nameLabel.innerText = 'Owner / Chauffeur Name *';
+        distLabel.innerText = 'Operating Base District *';
+        notesLabel.innerText = 'Vehicle Condition, Years of Experience & Languages';
+        submitBtn.innerText = 'Register Call Taxi / Chauffeur Fleet';
+        submitBtn.className = 'px-8 py-3 text-xs sm:text-sm font-bold rounded-lg shadow-lg bg-amber-500 hover:bg-amber-600 text-stone-950';
+        document.getElementById('dynamic-field-1').innerHTML = `
+          <label class="block font-semibold text-stone-300 mb-1.5">Vehicle Type</label>
+          <select id="form-vehicle" class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white">
+            <option>Toyota KDH High-Roof Van (AC)</option>
+            <option>Toyota Prius / Axio Sedan (AC)</option>
+            <option>Mini-Coach (20+ seats)</option>
+            <option>Local Tuk-Tuk Fleet</option>
+          </select>`;
+        document.getElementById('dynamic-field-2').innerHTML = `
+          <label class="block font-semibold text-stone-300 mb-1.5">License Accreditation</label>
+          <select id="form-license" class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white">
+            <option>SLTDA Certified Chauffeur Guide</option>
+            <option>Registered Tourist Commercial Vehicle</option>
+            <option>Call Taxi Fleet (3+ vehicles)</option>
+          </select>`;
+      } else if (tab === 'hotel') {
+        nameLabel.innerText = 'Manager / Host Name *';
+        distLabel.innerText = 'Property District / City *';
+        notesLabel.innerText = 'Property Name, Website / Photos Link & Amenities';
+        submitBtn.innerText = 'Submit Hotel / Villa Partnership';
+        submitBtn.className = 'px-8 py-3 text-xs sm:text-sm font-bold rounded-lg shadow-lg bg-sky-600 hover:bg-sky-500 text-white';
+        document.getElementById('dynamic-field-1').innerHTML = `
+          <label class="block font-semibold text-stone-300 mb-1.5">Stay Tier Category</label>
+          <select id="form-hotel-tier" class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white">
+            <option>Small / Budget (Homestay, Treehouse, Hostel)</option>
+            <option>Medium / Comfort (Boutique Villa, River Lodge)</option>
+            <option>High / Luxury (5-Star Resort, Heritage Estate)</option>
+          </select>`;
+        document.getElementById('dynamic-field-2').innerHTML = `
+          <label class="block font-semibold text-stone-300 mb-1.5">Total Room Count</label>
+          <input type="number" min="1" max="300" value="10" id="form-rooms" class="w-full px-3.5 py-2.5 bg-stone-900 border border-stone-700 rounded-lg text-white">`;
+      }
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('partner-form').classList.add('hidden');
+      document.getElementById('form-success-msg').classList.remove('hidden');
+    }
+
+    function resetContactForm() {
+      document.getElementById('partner-form').reset();
+      document.getElementById('partner-form').classList.remove('hidden');
+      document.getElementById('form-success-msg').classList.add('hidden');
+    }
+
+    // INITIALIZE ON LOAD
+    renderDistricts();
+    renderTransports();
+    renderStays();
+    renderReviews();
+    renderFaqs();
+    updateEstimator();
+  </script>
+</body>
+</html>

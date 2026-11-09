@@ -1,0 +1,6 @@
+{
+  "name": "Ceylon Odyssey - Sri Lanka Travel & District Explorer",
+  "description": "Comprehensive Sri Lanka travel portal featuring district guides, unique hidden gems, transport booking, budget-friendly stay tiers, interactive cost estimator, and traveler & partner coordination.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
